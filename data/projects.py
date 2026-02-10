@@ -55,7 +55,7 @@ PROJECTS = [
         'tech': ['Python', 'Spark', 'Time Series', 'Decision Trees', 'PyCaret'],
         'impact': 'Reduced quality parameter estimation from months to hours',
         'url': 'https://github.com/brayanksenhuck',
-        'image': 'project4.jpg'
+        'image': 'project1.jpg'
     },
     {
         'title': 'No-Show Prediction for Car Rental',
@@ -66,7 +66,7 @@ PROJECTS = [
         'tech': ['Python', 'Machine Learning', 'Classification', 'Power BI'],
         'impact': 'Enabled data-driven strategy changes through risk scoring system',
         'url': 'https://github.com/brayanksenhuck',
-        'image': 'project5.jpg'
+        'image': 'project2.jpg'
     },
     {
         'title': 'E-commerce User Behavior Analysis',
@@ -77,6 +77,6 @@ PROJECTS = [
         'tech': ['Google Analytics', 'Hotjar', 'A/B Testing', 'Data Analysis', 'Power BI'],
         'impact': 'Identified conversion barriers through behavior analysis and testing',
         'url': 'https://github.com/brayanksenhuck',
-        'image': 'project6.jpg'
+        'image': 'project3.jpg'
     }
 ]

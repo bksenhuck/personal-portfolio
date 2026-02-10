@@ -13,7 +13,7 @@ EXPERIENCE = [
         'company': 'Mercado Livre',
         'period': 'June 2021 - Present (4 years 9 months)',
         'location': 'São Paulo, Brazil',
-        'image': 'images/experience/mercado-livre.jpg',
+        'image': 'images/profile.jpg',
         'description': (
             'Senior Data Scientist focused on supporting diverse business areas. '
             'Key achievements include implementation of optimization models for '
@@ -25,7 +25,7 @@ EXPERIENCE = [
         'company': 'Ambev (Cervejaria)',
         'period': 'January 2020 - June 2021 (1 year 6 months)',
         'location': 'São Paulo, Brazil',
-        'image': 'images/experience/ambev.jpg',
+        'image': 'images/profile.jpg',
         'description': (
             'Technical leader in structuring data science architectures and methodologies. '
             'Developed full lifecycle data science projects including ingestion, modeling, '
@@ -37,7 +37,7 @@ EXPERIENCE = [
         'company': 'Ambev (Cervejaria)',
         'period': 'February 2019 - December 2019 (11 months)',
         'location': 'São Paulo, Brazil',
-        'image': 'images/experience/ambev.jpg',
+        'image': 'images/profile.jpg',
         'description': (
             'Identified opportunities in various data sources and developed quality-focused '
             'hypotheses with business teams. Developed open-source algorithms for industrial '
@@ -50,7 +50,7 @@ EXPERIENCE = [
         'company': 'Jellyfish',
         'period': 'February 2018 - February 2019 (1 year 1 month)',
         'location': 'São Paulo, Brazil',
-        'image': 'images/experience/jellyfish.jpg',
+        'image': 'images/profile.jpg',
         'description': (
             'Collected, organized and processed Big Data from multiple sources. '
             'Developed Power BI and Data Studio dashboards presented monthly to directors. '
@@ -62,7 +62,7 @@ EXPERIENCE = [
         'company': 'SPI Integração de Sistemas Ltda',
         'period': 'March 2017 - February 2018 (1 year)',
         'location': 'São Paulo, Brazil',
-        'image': 'images/experience/spi.jpg',
+        'image': 'images/profile.jpg',
         'description': (
             'Developed projects in robotics and digital manufacturing. Worked on SCADA systems '
             'and industrial network communication. Participated in consulting and Industry 4.0 '
@@ -74,7 +74,7 @@ EXPERIENCE = [
         'company': 'Barclays Investment Bank',
         'period': 'May 2015 - February 2016 (10 months)',
         'location': 'São Paulo, Brazil',
-        'image': 'images/experience/barclays.jpg',
+        'image': 'images/profile.jpg',
         'description': (
             'Supervised implementation of operational improvements and analysis tools. '
             'Gained understanding of business environment, process structures, '
@@ -86,7 +86,7 @@ EXPERIENCE = [
         'company': 'IBM',
         'period': 'May 2014 - September 2014 (5 months)',
         'location': 'Toronto, Canada',
-        'image': 'images/experience/ibm.jpg',
+        'image': 'images/projects/IBM.jpg',
         'description': (
             'Developed projects using IBM Bluemix platform with SQL, Java and DB2. '
             'Projects showcased at IBM Canada public events demonstrating cloud and '

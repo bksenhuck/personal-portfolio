@@ -721,7 +721,7 @@ body {
 }
 
 .academic-subtitle {
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 .experience-list {
@@ -806,6 +806,7 @@ body {
 .academic-list {
     max-width: 800px;
     margin: 0 auto;
+    margin-bottom: -2rem;
 }
 
 .academic-item {

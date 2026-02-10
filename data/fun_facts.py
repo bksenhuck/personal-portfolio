@@ -11,7 +11,7 @@ FUN_FACTS = [
             'I\'ve lived and studied in multiple countries including Canada and Brazil. '
             'Exchange student experience shaped my perspective on data science and problem-solving.'
         ),
-        'image': 'images/fun-facts/explorer.jpg',
+        'image': 'images/profile.jpg',
         'position': 'left'
     },
     {
@@ -20,7 +20,7 @@ FUN_FACTS = [
             'Selected among 15 global candidates for a prestigious Silicon Valley incubator program. '
             'Spent 4 months in California developing and pitching an industrial accident prediction algorithm.'
         ),
-        'image': 'images/fun-facts/silicon-valley.jpg',
+        'image': 'images/profile.jpg',
         'position': 'right'
     },
     {
@@ -29,7 +29,7 @@ FUN_FACTS = [
             'Develop and share open-source algorithms. Passionate about giving back to the tech community '
             'and helping others solve complex data science challenges.'
         ),
-        'image': 'images/fun-facts/open-source.jpg',
+        'image': 'images/profile.jpg',
         'position': 'left'
     },
     {
@@ -38,7 +38,7 @@ FUN_FACTS = [
             'Basketball enthusiast and lifelong learner. I believe in constant evolution, both in technology '
             'and personal development. Always exploring new data science frontiers and methodologies.'
         ),
-        'image': 'images/fun-facts/learner.jpg',
+        'image': 'images/profile.jpg',
         'position': 'right'
     }
 ]
