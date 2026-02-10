@@ -219,24 +219,29 @@
                 <div class="education-list">
                     {% for edu in education %}
                     <article class="education-item">
-                        <div class="edu-header">
-                            <div class="edu-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="edu-info">
-                                <h3 class="edu-degree">{{ edu.degree }}</h3>
-                                <p class="edu-institution">{{ edu.institution }}</p>
-                                <p class="edu-period">{{ edu.period }}</p>
-                            </div>
+                        <div class="edu-image">
+                            <img src="{{ url_for('static', filename=edu.image) }}" alt="{{ edu.institution }}">
                         </div>
-                        <p class="edu-description">{{ edu.description }}</p>
-                        {% if edu.highlights %}
-                        <ul class="edu-highlights">
-                            {% for destaque in edu.highlights %}
-                            <li><i class="fas fa-check-circle"></i> {{ destaque }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
+                        <div class="edu-content">
+                            <div class="edu-header">
+                                <div class="edu-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="edu-info">
+                                    <h3 class="edu-degree">{{ edu.degree }}</h3>
+                                    <p class="edu-institution">{{ edu.institution }}</p>
+                                    <p class="edu-period">{{ edu.period }}</p>
+                                </div>
+                            </div>
+                            <p class="edu-description">{{ edu.description }}</p>
+                            {% if edu.highlights %}
+                            <ul class="edu-highlights">
+                                {% for destaque in edu.highlights %}
+                                <li><i class="fas fa-check-circle"></i> {{ destaque }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
                     </article>
                     {% endfor %}
                 </div>
@@ -256,7 +261,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 {{ profile.name }}. <span data-i18n="footer.built">Desenvolvido com Flask e hospedado no Render.</span></p>
+            <p>&copy; 2026 {{ profile.name }}. <span data-i18n="footer.built">Desenvolvido com Python, Flask, HTML, CSS, JavaScript e hospedado no Render.</span></p>
         </div>
     </footer>
     

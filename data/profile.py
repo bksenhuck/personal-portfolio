@@ -9,7 +9,7 @@ PROFILE = {
         'analysis. Specialist in building end-to-end data science solutions that drive business value.'
     ),
     'email': 'ksenhuck@gmail.com',
-    'github': 'https://github.com/brayanksenhuck',
+    'github': 'https://github.com/bksenhuck',
     'linkedin': 'https://linkedin.com/in/brayan-ksenhuck',
     'phone': '+55 11 98642-1719',
     'location': 'São Paulo, SP, Brasil',

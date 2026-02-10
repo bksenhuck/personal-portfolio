@@ -199,11 +199,11 @@ function initCarousel() {
     }
 
     let currentIndex = 0;
-    let itemsToShow = 1; // Always show 1 project at a time (simple!)
+    let itemsToShow = 1; // Show 1 project at a time
 
     // Calculate items to show based on screen size
     function getItemsToShow() {
-        return 1; // Simplified: always show one item
+        return 1; // Always show one item
     }
 
     // Calculate max slides
@@ -230,76 +230,53 @@ function initCarousel() {
             itemWidth: itemWidth.toFixed(2),
             moveAmount: moveAmount.toFixed(2),
             offset: offset.toFixed(2),
-            maxSlides: getMaxSlides()
+            maxSlides: getMaxSlides(),
+            totalItems: items.length
         });
     }
 
     // Update active dot
     function updateDots() {
-        const maxSlides = getMaxSlides();
-        const maxIndex = maxSlides - 1;
+        const maxIndex = items.length - 1;
+        
+        dots.forEach((dot, index) => {
+            dot.style.display = 'block';
+            dot.classList.toggle('active', index === currentIndex);
+        });
         
         console.log('UpdateDots called:', {
             currentIndex,
-            maxSlides,
             maxIndex,
             totalDots: dots.length,
             itemsToShow
-        });
-        
-        dots.forEach((dot, index) => {
-            // Show only dots for actual slides
-            if (index > maxIndex) {
-                dot.style.display = 'none';
-                console.log(`  Dot ${index}: hidden (beyond maxIndex ${maxIndex})`);
-            } else {
-                dot.style.display = 'block';
-                dot.classList.toggle('active', index === currentIndex);
-                console.log(`  Dot ${index}: shown, active=${index === currentIndex}`);
-            }
-        });
-        
-        // Update button states (don't hide buttons)
-        if (prevBtn) {
-            prevBtn.disabled = currentIndex === 0;
-        }
-        if (nextBtn) {
-            nextBtn.disabled = currentIndex >= maxIndex;
-        }
-        
-        console.log('Buttons state:', {
-            prevDisabled: currentIndex === 0,
-            nextDisabled: currentIndex >= maxIndex,
-            maxIndex
         });
     }
 
     // Navigate to specific slide
     function goToSlide(index) {
-        const maxSlides = getMaxSlides();
-        const maxIndex = maxSlides - 1;
-        currentIndex = Math.max(0, Math.min(index, maxIndex));
-        console.log('Go to slide:', { index, currentIndex, maxSlides, maxIndex });
+        const maxIndex = items.length - 1;
+        
+        // Implementar loop infinito
+        if (index < 0) {
+            currentIndex = maxIndex;
+        } else if (index > maxIndex) {
+            currentIndex = 0;
+        } else {
+            currentIndex = index;
+        }
+        
+        console.log('Go to slide:', { requestedIndex: index, currentIndex, maxIndex, totalItems: items.length });
         updateCarousel();
     }
 
     // Previous slide
     function prevSlide() {
-        if (currentIndex > 0) {
-            goToSlide(currentIndex - 1);
-        }
+        goToSlide(currentIndex - 1);
     }
 
     // Next slide
     function nextSlide() {
-        const maxSlides = getMaxSlides();
-        const maxIndex = maxSlides - 1;
-        console.log('Next slide called:', { currentIndex, maxIndex });
-        if (currentIndex < maxIndex) {
-            goToSlide(currentIndex + 1);
-        } else {
-            console.log('Already at last slide');
-        }
+        goToSlide(currentIndex + 1);
     }
 
     // Event listeners for buttons - Direct and simple

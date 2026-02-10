@@ -24,7 +24,7 @@
   "projects": {
     "title": "Proyectos Destacados",
     "impact": "Impacto",
-    "view": "Ver Proyecto"
+    "view": "Más Detalles"
   },
   "experience": {
     "title": "Experiencia Profesional"
@@ -38,6 +38,6 @@
     "cta": "Contactar"
   },
   "footer": {
-    "built": "Desarrollado con Flask y desplegado en Render."
+    "built": "Desarrollado con Python, Flask, HTML, CSS, JavaScript y desplegado en Render."
   }
 }

@@ -24,7 +24,7 @@
   "projects": {
     "title": "Featured Projects",
     "impact": "Impact",
-    "view": "View Project"
+    "view": "More Details"
   },
   "experience": {
     "title": "Professional Experience"
@@ -38,6 +38,6 @@
     "cta": "Get in Touch"
   },
   "footer": {
-    "built": "Built with Flask and deployed on Render."
+    "built": "Built with Python, Flask, HTML, CSS, JavaScript and deployed on Render."
   }
 }
