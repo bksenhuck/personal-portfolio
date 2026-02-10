@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Brayan Ksenhuck – Data Scientist | Machine Learning & Analytics</title>
+    <meta name="description" content="Brayan Ksenhuck is a Data Scientist specializing in Machine Learning, Python, and data-driven solutions. Portfolio showcasing ML projects and analytics expertise.">
+    <meta name="keywords" content="Brayan Ksenhuck, Data Scientist, Machine Learning, Python, SQL, Data Analytics, Data Visualization, AWS, Statistics">
+    <meta name="author" content="Brayan C Ksenhuck">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Brayan Ksenhuck – Data Scientist">
+    <meta property="og:description" content="Data Scientist specializing in Machine Learning and data-driven solutions. View my portfolio and projects.">
+    <meta property="og:url" content="https://brayanksenhuck.dev">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://brayanksenhuck.dev{{ url_for('static', filename='images/profile.jpg') }}">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brayan Ksenhuck – Data Scientist">
+    <meta name="twitter:description" content="Data Scientist specializing in Machine Learning and data-driven solutions.">
+    <meta name="twitter:image" content="https://brayanksenhuck.dev{{ url_for('static', filename='images/profile.jpg') }}">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="nav-brand">Brayan Ksenhuck</a>
+            
+            <div class="nav-links">
+                <a href="#about" data-i18n="nav.about">Sobre</a>
+                <a href="#skills" data-i18n="nav.skills">Habilidades</a>
+                <a href="#projects" data-i18n="nav.projects">Projetos</a>
+                <a href="#experience" data-i18n="nav.experience">Experiência</a>
+                <a href="#contact" data-i18n="nav.contact">Contato</a>
+            </div>
+            
+            <div class="nav-controls">
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                
+                <!-- Language Selector -->
+                <div class="lang-selector">
+                    <button class="lang-button" onclick="document.querySelector('.lang-dropdown').classList.toggle('active')">
+                        <span class="current-lang">🇧🇷</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option active" data-lang="pt" onclick="changeLanguage('pt')">
+                            🇧🇷 Português
+                        </button>
+                        <button class="lang-option" data-lang="en" onclick="changeLanguage('en')">
+                            🇺🇸 English
+                        </button>
+                        <button class="lang-option" data-lang="es" onclick="changeLanguage('es')">
+                            🇪🇸 Español
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="{{ url_for('static', filename='images/' + perfil.foto) }}" 
+                     alt="Brayan Ksenhuck - Data Scientist profile photo" 
+                     class="profile-img"
+                     onerror="this.style.display='none'">
+                <h1 class="hero-title"><span data-i18n="hero.greeting">Olá, sou</span> {{ perfil.nome }}</h1>
+                <p class="hero-subtitle">{{ perfil.titulo }}</p>
+                <p class="hero-bio" data-i18n="hero.bio">{{ perfil.bio }}</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary" data-i18n="hero.cta_projects">Ver Projetos</a>
+                    <a href="#contact" class="btn-secondary" data-i18n="hero.cta_contact">Entrar em Contato</a>
+                </div>
+                <div class="social-links">
+                    <a href="mailto:{{ perfil.email }}" class="social-link" title="Email Brayan Ksenhuck" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="{{ perfil.github }}" target="_blank" rel="noopener" class="social-link" title="GitHub Profile" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="{{ perfil.linkedin }}" target="_blank" rel="noopener" class="social-link" title="LinkedIn Profile" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title" data-i18n="about.title">Sobre Mim</h2>
+                <div class="about-content">
+                    <p data-i18n="about.text1">I'm a Data Scientist with expertise in building machine learning models and extracting actionable insights from complex datasets. My work focuses on creating data-driven solutions that deliver measurable business value.</p>
+                    <p data-i18n="about.text2">With a strong foundation in statistics, programming, and cloud technologies, I transform raw data into strategic assets that drive informed decision-making.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title" data-i18n="skills.title">Habilidades Técnicas</h2>
+                <div class="skills-grid">
+                    {% for skill in skills %}
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <h3 class="skill-name">{{ skill.nome }}</h3>
+                            <span class="skill-level">{{ skill.nivel }}%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: {{ skill.nivel }}%"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title" data-i18n="projects.title">Projetos em Destaque</h2>
+                <div class="projects-grid">
+                    {% for projeto in projetos %}
+                    <article class="project-card">
+                        <div class="project-image">
+                            <img src="{{ url_for('static', filename='images/' + projeto.imagem) }}" 
+                                 alt="{{ projeto.titulo }} - Data Science Project"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\'%3E%3Crect fill=\'%23e5e7eb\' width=\'400\' height=\'250\'/%3E%3Ctext fill=\'%239ca3af\' font-family=\'sans-serif\' font-size=\'18\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3E{{ projeto.titulo }}%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">{{ projeto.titulo }}</h3>
+                            <p class="project-description">{{ projeto.descricao }}</p>
+                            <p class="project-impact"><strong data-i18n="projects.impact">Impacto:</strong> {{ projeto.impacto }}</p>
+                            <div class="project-tech">
+                                {% for tech in projeto.tech %}
+                                <span class="tech-badge">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                            <a href="{{ projeto.url }}" target="_blank" rel="noopener" class="project-link">
+                                <span data-i18n="projects.view">Ver Projeto</span> <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience">
+            <div class="container">
+                <h2 class="section-title" data-i18n="experience.title">Experiência Profissional</h2>
+                <div class="experience-list">
+                    {% for exp in experiencia %}
+                    <article class="experience-item">
+                        <h3 class="exp-title">{{ exp.cargo }}</h3>
+                        <p class="exp-company">{{ exp.empresa }}</p>
+                        <p class="exp-period">{{ exp.periodo }}</p>
+                        <p class="exp-description">{{ exp.descricao }}</p>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title" data-i18n="contact.title">Vamos Conversar?</h2>
+                <p class="contact-text" data-i18n="contact.text">I'm always open to discussing new opportunities, collaborations, or data science challenges.</p>
+                <a href="mailto:{{ perfil.email }}" class="btn-primary" data-i18n="contact.cta">Entre em Contato</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 {{ perfil.nome }}. <span data-i18n="footer.built">Desenvolvido com Flask e hospedado no Render.</span></p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "bio": "Transforming data into actionable insights and building ML solutions that drive business impact.",
+    "cta_projects": "View Projects",
+    "cta_contact": "Get in Touch"
+  },
+  "about": {
+    "title": "About Me",
+    "text1": "I'm a Data Scientist with expertise in building machine learning models and extracting actionable insights from complex datasets. My work focuses on creating data-driven solutions that deliver measurable business value.",
+    "text2": "With a strong foundation in statistics, programming, and cloud technologies, I transform raw data into strategic assets that drive informed decision-making."
+  },
+  "skills": {
+    "title": "Technical Skills"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "impact": "Impact",
+    "view": "View Project"
+  },
+  "experience": {
+    "title": "Professional Experience"
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "text": "I'm always open to discussing new opportunities, collaborations, or data science challenges.",
+    "cta": "Get in Touch"
+  },
+  "footer": {
+    "built": "Built with Flask and deployed on Render."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "about": "Acerca de",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "bio": "Transformando datos en insights accionables y construyendo soluciones de ML que generan impacto en los negocios.",
+    "cta_projects": "Ver Proyectos",
+    "cta_contact": "Ponerse en Contacto"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "text1": "Soy un Científico de Datos con experiencia en construir modelos de machine learning y extraer insights accionables de conjuntos de datos complejos. Mi trabajo se centra en crear soluciones basadas en datos que entregan valor mensurable al negocio.",
+    "text2": "Con una base sólida en estadística, programación y tecnologías en la nube, transformo datos brutos en activos estratégicos que impulsan la toma de decisiones informada."
+  },
+  "skills": {
+    "title": "Habilidades Técnicas"
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+    "impact": "Impacto",
+    "view": "Ver Proyecto"
+  },
+  "experience": {
+    "title": "Experiencia Profesional"
+  },
+  "contact": {
+    "title": "¿Conversamos?",
+    "text": "Siempre estoy abierto a discutir nuevas oportunidades, colaboraciones o desafíos en ciencia de datos.",
+    "cta": "Contactar"
+  },
+  "footer": {
+    "built": "Desarrollado con Flask y desplegado en Render."
+  }
+}
