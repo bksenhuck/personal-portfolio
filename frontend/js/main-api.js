@@ -84,7 +84,7 @@ function renderProjects(data) {
     if (!projects || projects.length === 0) return;
     
     const carouselTrack = document.querySelector('.carousel-track');
-    const carouselDots = document.querySelector('.carousel-dots');
+    const carouselIndicators = document.querySelector('.carousel-indicators');
     
     if (carouselTrack) {
         carouselTrack.innerHTML = projects.map(project => `
@@ -93,17 +93,20 @@ function renderProjects(data) {
                     <div class="project-image">
                         <img src="images/${project.image}" 
                              alt="${project.title} - Data Science Project"
-                             onerror="this.src='images/placeholder.jpg'">
+                             onerror="this.style.display='none'">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">${project.title}</h3>
                         <p class="project-description">${project.description}</p>
-                        <div class="project-tech">
-                            ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                        </div>
+                        ${project.impact ? `
                         <p class="project-impact">
-                            <i class="fas fa-chart-line"></i> ${project.impact}
+                            <i class="fas fa-chart-line"></i> 
+                            <span data-i18n="projects.impact">Impacto:</span> ${project.impact}
                         </p>
+                        ` : ''}
+                        <div class="project-tech">
+                            ${project.tech.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
+                        </div>
                         <a href="${project.url}" target="_blank" rel="noopener" class="project-link">
                             <span data-i18n="projects.view">Ver Projeto</span>
                             <i class="fas fa-arrow-right"></i>
@@ -114,8 +117,8 @@ function renderProjects(data) {
         `).join('');
     }
     
-    if (carouselDots) {
-        carouselDots.innerHTML = projects.map((_, index) => 
+    if (carouselIndicators) {
+        carouselIndicators.innerHTML = projects.map((_, index) => 
             `<button class="carousel-dot ${index === 0 ? 'active' : ''}" 
                      aria-label="Go to project ${index + 1}"></button>`
         ).join('');
