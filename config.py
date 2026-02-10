@@ -1,24 +1,31 @@
-"""Application configuration settings."""
+"""Application configuration settings.
+
+Provides configuration classes for different environments:
+- DevelopmentConfig: Local development with debug enabled
+- ProductionConfig: Production environment with enhanced security
+- Config: Base configuration shared by all environments
+"""
 
 import os
 
 
 class Config:
-    """Base configuration class."""
-    
+    """Base configuration class with shared settings."""
+
     # Flask settings
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production'
+    SECRET_KEY = os.environ.get('SECRET_KEY') \
+        or 'dev-secret-key-change-in-production'
     DEBUG = False
     TESTING = False
-    
+
     # Application settings
     JSON_AS_ASCII = False
     JSON_SORT_KEYS = False
-    
+
     # Static files
     STATIC_FOLDER = 'static'
     TEMPLATE_FOLDER = 'templates'
-    
+
     # Translations
     TRANSLATIONS_FOLDER = 'translations'
     DEFAULT_LANGUAGE = 'pt'

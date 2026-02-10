@@ -1,8 +1,8 @@
 {
   "nav": {
     "about": "About",
-    "skills": "Skills",
     "projects": "Projects",
+    "facts": "Fun Facts",
     "experience": "Experience",
     "education": "Education",
     "contact": "Contact"
@@ -21,13 +21,16 @@
   "skills": {
     "title": "Technical Skills"
   },
+  "facts": {
+    "title": "Fun Facts About Me"
+  },
   "projects": {
     "title": "Featured Projects",
     "impact": "Impact",
     "view": "More Details"
   },
   "experience": {
-    "title": "Professional Experience"
+    "title": "Experience"
   },
   "education": {
     "title": "Education"

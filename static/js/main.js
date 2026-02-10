@@ -1,3 +1,47 @@
+// Dropdown de experiência mais estático
+document.addEventListener('DOMContentLoaded', function () {
+    const expDropdown = document.querySelector('.experience-dropdown');
+    if (expDropdown) {
+        let timeoutId;
+        expDropdown.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId);
+            expDropdown.classList.add('open');
+        });
+        expDropdown.addEventListener('mouseleave', function () {
+            timeoutId = setTimeout(() => {
+                expDropdown.classList.remove('open');
+            }, 200); // Pequeno delay para evitar fechamento acidental
+        });
+        // Permite clicar para abrir em mobile; no desktop permite navegação para #experience
+        const expMainLink = expDropdown.querySelector('.experience-link');
+        if (expMainLink) {
+            expMainLink.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    expDropdown.classList.toggle('open');
+                } else {
+                    // desktop: allow default navigation/scroll (global handler or specific handler will run)
+                }
+            });
+        }
+        // Intercepta cliques nas opções do dropdown e faz scroll compensado
+        const expLinks = expDropdown.querySelectorAll('.experience-dropdown-content a');
+        expLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                const id = href && href.startsWith('#') ? href.slice(1) : href;
+                const target = document.getElementById(id);
+                if (target) {
+                    scrollToElementWithNavOffset(target);
+                    // update URL hash without jumping
+                    if (id) history.pushState(null, '', '#' + id);
+                }
+                expDropdown.classList.remove('open');
+            });
+        });
+    }
+});
 // Translation and Theme Management
 
 // Load translations
@@ -75,41 +119,47 @@ function toggleMobileMenu() {
 }
 
 // Smooth Scrolling with Enhanced Animation
+// Helper: smooth scroll to an element compensating for fixed navbar
+function scrollToElementWithNavOffset(target) {
+    const navbar = document.querySelector('.navbar');
+    const navHeight = navbar ? navbar.offsetHeight : 0;
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 800; // Duration in ms
+    let start = null;
+
+    function easeInOutCubic(t) {
+        return t < 0.5
+            ? 4 * t * t * t
+            : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    }
+
+    function animation(currentTime) {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+
+        window.scrollTo(0, startPosition + distance * ease);
+
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        // Ignore anchors that are inside the experience dropdown (handled separately),
+        // but allow the main header link to `#experience` to be handled normally.
+        if (this.closest && this.closest('.experience-dropdown') && this.getAttribute('href') !== '#experience') return;
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const navHeight = document.querySelector('.navbar').offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            const duration = 800; // Duration in ms
-            let start = null;
-
-            // Easing function for smooth animation
-            function easeInOutCubic(t) {
-                return t < 0.5 
-                    ? 4 * t * t * t 
-                    : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-            }
-
-            // Animation function
-            function animation(currentTime) {
-                if (start === null) start = currentTime;
-                const timeElapsed = currentTime - start;
-                const progress = Math.min(timeElapsed / duration, 1);
-                const ease = easeInOutCubic(progress);
-                
-                window.scrollTo(0, startPosition + distance * ease);
-                
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation);
-                }
-            }
-
-            requestAnimationFrame(animation);
-            
+            scrollToElementWithNavOffset(target);
             // Close mobile menu if open
             document.querySelector('.nav-links')?.classList.remove('active');
             document.querySelector('.hamburger')?.classList.remove('active');
@@ -167,6 +217,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     setTimeout(tryInitCarousel, 150);
+    // If page loaded with a hash, scroll to it with offset
+    if (window.location.hash) {
+        const id = window.location.hash.slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+            // small timeout to allow layout to stabilize
+            setTimeout(() => scrollToElementWithNavOffset(target), 80);
+        }
+    }
 });
 
 // Carousel Functionality

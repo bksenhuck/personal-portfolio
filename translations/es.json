@@ -1,8 +1,8 @@
 {
   "nav": {
     "about": "Acerca de",
-    "skills": "Habilidades",
     "projects": "Proyectos",
+    "facts": "Curiosidades",
     "experience": "Experiencia",
     "education": "Educación",
     "contact": "Contacto"
@@ -21,13 +21,16 @@
   "skills": {
     "title": "Habilidades Técnicas"
   },
+  "facts": {
+    "title": "Curiosidades Sobre Mí"
+  },
   "projects": {
     "title": "Proyectos Destacados",
     "impact": "Impacto",
     "view": "Más Detalles"
   },
   "experience": {
-    "title": "Experiencia Profesional"
+    "title": "Experiencia"
   },
   "education": {
     "title": "Formación Académica"

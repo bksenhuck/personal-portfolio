@@ -1,4 +1,8 @@
-"""Educational background and academic achievements."""
+"""Educational background and academic achievements.
+
+Includes all degrees, specializations, and educational experiences
+with chronological ordering from most recent to earliest.
+"""
 
 EDUCATION = [
     {

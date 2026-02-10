@@ -35,12 +35,30 @@
             
             <div class="nav-links">
                 <a href="#about" data-i18n="nav.about">Sobre</a>
-                <a href="#skills" data-i18n="nav.skills">Habilidades</a>
                 <a href="#projects" data-i18n="nav.projects">Projetos</a>
-                <a href="#experience" data-i18n="nav.experience">Experiência</a>
+                <div class="experience-dropdown nav-experience-hover">
+                    <a href="#experience" data-i18n="nav.experience" class="experience-link">Experiência <i class="fas fa-chevron-down" style="font-size:0.8em;"></i></a>
+                    <div class="experience-dropdown-content">
+                        <a href="#experience">Profissional</a>
+                        <a href="#academic-experience">Acadêmica</a>
+                    </div>
+                </div>
                 <a href="#education" data-i18n="nav.education">Educação</a>
                 <a href="#contact" data-i18n="nav.contact">Contato</a>
             </div>
+                    <script>
+                    // Função para scroll suave ao clicar nas opções do dropdown
+                    // Compensa a altura do header fixo para posicionamento correto
+                    function scrollToSection(sectionId) {
+                        const section = document.getElementById(sectionId);
+                        const navbar = document.querySelector('.navbar');
+                        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                        if (section) {
+                            const top = section.getBoundingClientRect().top + window.scrollY - navbarHeight - 12;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                    }
+                    </script>
             
             <div class="nav-controls">
                 <!-- Theme Toggle -->
@@ -120,21 +138,21 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="skills">
+        <!-- Fun Facts Section -->
+        <section id="fun-facts" class="fun-facts">
             <div class="container">
-                <h2 class="section-title" data-i18n="skills.title">Habilidades Técnicas</h2>
-                <div class="skills-grid">
-                    {% for skill in skills %}
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">{{ skill.name }}</span>
-                            <span class="skill-percentage">{{ skill.level }}%</span>
+                <h2 class="section-title" data-i18n="facts.title">Curiosidades Sobre Mim</h2>
+                <div class="fun-facts-grid">
+                    {% for fact in fun_facts %}
+                    <article class="fun-fact-item fun-fact-{{ fact.position }}">
+                        <div class="fact-image">
+                            <img src="{{ url_for('static', filename=fact.image) }}" alt="{{ fact.title }}">
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: {{ skill.level }}%"></div>
+                        <div class="fact-content">
+                            <h3 class="fact-title">{{ fact.title }}</h3>
+                            <p class="fact-description">{{ fact.description }}</p>
                         </div>
-                    </div>
+                    </article>
                     {% endfor %}
                 </div>
             </div>
@@ -198,14 +216,56 @@
         <!-- Experience Section -->
         <section id="experience" class="experience">
             <div class="container">
-                <h2 class="section-title" data-i18n="experience.title">Experiência Profissional</h2>
+                <h2 class="section-title" data-i18n="experience.title">Experiência</h2>
+                
+
+
+                <!-- Experience Subtitle -->
+                <div class="experience-subtitle">
+                    <i class="fas fa-briefcase"></i>
+                    <h3 data-i18n="experience.professional">Experiência Profissional</h3>
+                </div>
                 <div class="experience-list">
                     {% for exp in experience %}
                     <article class="experience-item">
-                        <h3 class="exp-title">{{ exp.role }}</h3>
-                        <p class="exp-company">{{ exp.company }}</p>
-                        <p class="exp-period">{{ exp.period }}</p>
-                        <p class="exp-description">{{ exp.description }}</p>
+                        <div class="exp-image">
+                            <img src="{{ url_for('static', filename=exp.image) }}" alt="{{ exp.company }}">
+                        </div>
+                        <div class="exp-content">
+                            <h3 class="exp-title">{{ exp.role }}</h3>
+                            <p class="exp-company">{{ exp.company }}</p>
+                            <p class="exp-period">{{ exp.period }}</p>
+                            <p class="exp-location">{{ exp.location }}</p>
+                            <p class="exp-description">{{ exp.description }}</p>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+
+                <!-- Academic Experience Subtitle -->
+                <div class="experience-subtitle academic-subtitle">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3 data-i18n="academic.title">Experiência Acadêmica</h3>
+                </div>
+                <div class="academic-list" id="academic-experience">
+                    {% for edu in education %}
+                    <article class="academic-item">
+                        <div class="academic-image">
+                            <img src="{{ url_for('static', filename=edu.image) }}" alt="{{ edu.degree }}">
+                        </div>
+                        <div class="academic-content">
+                            <h3 class="academic-title">{{ edu.degree }}</h3>
+                            <p class="academic-institution">{{ edu.institution }}</p>
+                            <p class="academic-period">{{ edu.period }}</p>
+                            <p class="academic-description">{{ edu.description }}</p>
+                            {% if edu.highlights %}
+                            <ul class="academic-highlights">
+                                {% for highlight in edu.highlights %}
+                                <li>{{ highlight }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
                     </article>
                     {% endfor %}
                 </div>

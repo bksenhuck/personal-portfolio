@@ -1,4 +1,13 @@
-"""Featured data science projects portfolio."""
+"""Featured data science projects portfolio.
+
+Each project includes:
+- title: Project name
+- description: Detailed project overview
+- tech: List of technologies used
+- impact: Business impact or achievements
+- url: Link to project repository
+- image: Project image filename
+"""
 
 PROJECTS = [
     {

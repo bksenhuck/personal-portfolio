@@ -1,4 +1,8 @@
-"""Personal profile information."""
+"""Personal profile information.
+
+Contains core profile data used throughout the application
+for SEO and social media metadata.
+"""
 
 PROFILE = {
     'name': 'Brayan Ksenhuck',

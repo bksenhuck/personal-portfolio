@@ -1,3 +1,58 @@
+/* Experience Dropdown in Header */
+.experience-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.experience-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.experience-link:hover {
+    color: var(--accent);
+}
+
+.experience-dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    min-width: 160px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    z-index: 1100;
+    margin-top: 0.5em;
+    padding: 0.5em 0;
+}
+
+.experience-dropdown-content a {
+    color: var(--text-primary);
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+    display: block;
+    font-size: 1em;
+    transition: background 0.2s, color 0.2s;
+}
+
+.experience-dropdown-content a:hover {
+    background-color: transparent;
+    color: var(--accent);
+}
+
+
+/* Dropdown mais estático: não fecha imediatamente ao sair do link */
+.experience-dropdown.open .experience-dropdown-content {
+    display: block;
+}
 /* Reset e variáveis */
 * {
     margin: 0;
@@ -398,56 +453,89 @@ body {
 }
 
 /* Skills Section */
-.skills {
+/* Fun Facts Section */
+.fun-facts {
     padding: 6rem 0;
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 900px;
+.fun-facts-grid {
+    max-width: 1100px;
     margin: 0 auto;
+    display: grid;
+    gap: 3rem;
 }
 
-.skill-item {
+.fun-fact-item {
     background-color: var(--bg-card);
-    padding: 1.5rem;
-    border-radius: 8px;
     border: 1px solid var(--border);
-}
-
-.skill-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.skill-name {
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-.skill-level {
-    color: var(--accent);
-    font-weight: 600;
-}
-
-.skill-bar {
-    height: 8px;
-    background-color: var(--bg-secondary);
-    border-radius: 4px;
+    border-radius: 12px;
     overflow: hidden;
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
 }
 
-.skill-progress {
+.fun-fact-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+}
+
+.fun-fact-left {
+    grid-template-columns: 40% 60%;
+}
+
+.fun-fact-left .fact-content {
+    padding: 2.5rem;
+}
+
+.fun-fact-right {
+    grid-template-columns: 60% 40%;
+}
+
+.fun-fact-right .fact-image {
+    order: 2;
+}
+
+.fun-fact-right .fact-content {
+    order: 1;
+    padding: 2.5rem;
+}
+
+.fact-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+}
+
+.fact-image img {
+    width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
-    border-radius: 4px;
-    transition: width 1s ease-out;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.fun-fact-item:hover .fact-image img {
+    transform: scale(1.05);
+}
+
+.fact-content {
+    padding: 2.5rem;
+}
+
+.fact-title {
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.fact-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.05rem;
 }
 
 /* Projects Section */
@@ -611,6 +699,31 @@ body {
     background-color: var(--bg-primary);
 }
 
+.experience-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+.experience-subtitle i {
+    font-size: 1.8rem;
+    color: var(--accent);
+}
+
+.experience-subtitle h3 {
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    margin: 0;
+    font-weight: 700;
+}
+
+.academic-subtitle {
+    margin-top: 4rem;
+}
+
 .experience-list {
     max-width: 800px;
     margin: 0 auto;
@@ -618,16 +731,44 @@ body {
 
 .experience-item {
     background-color: var(--bg-card);
-    padding: 2rem;
+    padding: 0;
     border-radius: 8px;
     border: 1px solid var(--border);
     margin-bottom: 2rem;
     transition: all 0.3s ease;
+    display: flex;
+    overflow: hidden;
 }
 
 .experience-item:hover {
     border-color: var(--accent);
-    transform: translateX(5px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+    transform: translateY(-5px);
+}
+
+.exp-image {
+    width: 30%;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+    overflow: hidden;
+}
+
+.exp-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.experience-item:hover .exp-image img {
+    transform: scale(1.05);
+}
+
+.exp-content {
+    width: 70%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .exp-title {
@@ -646,12 +787,93 @@ body {
 .exp-period {
     color: var(--text-secondary);
     font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.exp-location {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
     margin-bottom: 1rem;
 }
 
 .exp-description {
     color: var(--text-secondary);
     line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* Academic Experience - Within Experience Section */
+.academic-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.academic-item {
+    background-color: var(--bg-card);
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    overflow: hidden;
+}
+
+.academic-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+    transform: translateY(-5px);
+}
+
+.academic-image {
+    width: 30%;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+    overflow: hidden;
+}
+
+.academic-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.academic-item:hover .academic-image img {
+    transform: scale(1.05);
+}
+
+.academic-content {
+    width: 70%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.academic-title {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.academic-institution {
+    color: var(--accent);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.academic-period {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.academic-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex-grow: 1;
 }
 
 /* Education Section */
@@ -1064,8 +1286,30 @@ section.section-hidden {
         font-size: 2rem;
     }
 
-    .skills-grid {
-        grid-template-columns: 1fr;
+    .experience-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .experience-subtitle i {
+        font-size: 1.4rem;
+    }
+
+    .fun-fact-item {
+        grid-template-columns: 1fr !important;
+    }
+
+    .fun-fact-right .fact-image {
+        order: 1;
+    }
+
+    .fun-fact-right .fact-content {
+        order: 2;
+        padding-right: 0;
+        padding-left: 2.5rem;
+    }
+
+    .fact-image {
+        height: 200px;
     }
 
     .container {

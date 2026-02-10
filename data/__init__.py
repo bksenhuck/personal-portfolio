@@ -8,5 +8,6 @@ from .skills import SKILLS
 from .projects import PROJECTS
 from .experience import EXPERIENCE
 from .education import EDUCATION
+from .fun_facts import FUN_FACTS
 
-__all__ = ['PROFILE', 'SKILLS', 'PROJECTS', 'EXPERIENCE', 'EDUCATION']
+__all__ = ['PROFILE', 'SKILLS', 'PROJECTS', 'EXPERIENCE', 'EDUCATION', 'FUN_FACTS']

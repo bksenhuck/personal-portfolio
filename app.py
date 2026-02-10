@@ -2,6 +2,7 @@
 Brayan Ksenhuck - Data Scientist Portfolio.
 
 Personal landing page with SEO optimization and multilingual support.
+Flask application entry point.
 """
 
 import os
@@ -9,7 +10,7 @@ import os
 from flask import Flask, render_template, send_from_directory
 
 from config import config
-from data import PROFILE, SKILLS, PROJECTS, EXPERIENCE, EDUCATION
+from data import PROFILE, SKILLS, PROJECTS, EXPERIENCE, EDUCATION, FUN_FACTS
 
 
 def create_app(config_name=None):
@@ -51,7 +52,8 @@ def register_routes(app):
             projects=PROJECTS,
             skills=SKILLS,
             experience=EXPERIENCE,
-            education=EDUCATION
+            education=EDUCATION,
+            fun_facts=FUN_FACTS
         )
 
     @app.route('/static/translations/<path:filename>')
@@ -73,4 +75,4 @@ app = create_app()
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
