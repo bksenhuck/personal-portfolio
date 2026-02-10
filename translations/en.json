@@ -4,6 +4,7 @@
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
+    "education": "Education",
     "contact": "Contact"
   },
   "hero": {
@@ -27,6 +28,9 @@
   },
   "experience": {
     "title": "Professional Experience"
+  },
+  "education": {
+    "title": "Education"
   },
   "contact": {
     "title": "Let's Connect",

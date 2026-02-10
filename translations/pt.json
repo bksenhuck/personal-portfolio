@@ -4,6 +4,7 @@
     "skills": "Habilidades",
     "projects": "Projetos",
     "experience": "Experiência",
+    "education": "Educação",
     "contact": "Contato"
   },
   "hero": {
@@ -27,6 +28,9 @@
   },
   "experience": {
     "title": "Experiência Profissional"
+  },
+  "education": {
+    "title": "Formação Acadêmica"
   },
   "contact": {
     "title": "Vamos Conversar?",
