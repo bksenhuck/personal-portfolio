@@ -15,8 +15,18 @@
     gap: 0.3em;
 }
 
+.experience-link i {
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.3s ease;
+}
+
 .experience-link:hover {
     color: var(--accent);
+}
+
+.experience-link:hover i {
+    transform: translateY(2px);
 }
 
 .experience-dropdown-content {

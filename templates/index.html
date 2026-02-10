@@ -37,7 +37,10 @@
                 <a href="#about" data-i18n="nav.about">Sobre</a>
                 <a href="#projects" data-i18n="nav.projects">Projetos</a>
                 <div class="experience-dropdown nav-experience-hover">
-                    <a href="#experience" data-i18n="nav.experience" class="experience-link">Experiência <i class="fas fa-chevron-down" style="font-size:0.8em;"></i></a>
+                    <a href="#experience" class="experience-link">
+                        <span data-i18n="nav.experience">Experiência</span>
+                        <i class="fas fa-chevron-down" style="font-size:0.8em;"></i>
+                    </a>
                     <div class="experience-dropdown-content">
                         <a href="#experience">Profissional</a>
                         <a href="#academic-experience">Acadêmica</a>
@@ -325,7 +328,7 @@
         </div>
     </footer>
     
-    <!-- JavaScript -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- JavaScript Modules -->
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
