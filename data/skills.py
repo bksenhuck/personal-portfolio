@@ -2,9 +2,19 @@
 
 SKILLS = [
     {
+        'name': 'Machine Learning',
+        'level': 95,
+        'category': 'ml'
+    },
+    {
         'name': 'Python',
         'level': 95,
         'category': 'programming'
+    },
+    {
+        'name': 'Data Science',
+        'level': 95,
+        'category': 'analysis'
     },
     {
         'name': 'SQL',
@@ -12,23 +22,43 @@ SKILLS = [
         'category': 'database'
     },
     {
-        'name': 'Machine Learning',
+        'name': 'PySpark',
         'level': 90,
-        'category': 'ml'
+        'category': 'big_data'
     },
     {
-        'name': 'Statistics',
+        'name': 'Google Cloud Platform (GCP)',
         'level': 85,
-        'category': 'analysis'
+        'category': 'cloud'
     },
     {
-        'name': 'Data Visualization',
-        'level': 88,
-        'category': 'viz'
+        'name': 'Amazon Web Services (AWS)',
+        'level': 85,
+        'category': 'cloud'
     },
     {
-        'name': 'Cloud (AWS/Azure)',
+        'name': 'Power BI',
+        'level': 85,
+        'category': 'visualization'
+    },
+    {
+        'name': 'Databricks',
+        'level': 85,
+        'category': 'big_data'
+    },
+    {
+        'name': 'Azure Services',
         'level': 80,
         'category': 'cloud'
+    },
+    {
+        'name': 'Jupyter',
+        'level': 90,
+        'category': 'tools'
+    },
+    {
+        'name': 'English',
+        'level': 90,
+        'category': 'language'
     },
 ]

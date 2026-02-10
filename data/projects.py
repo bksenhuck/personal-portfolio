@@ -2,36 +2,72 @@
 
 PROJECTS = [
     {
-        'title': 'Customer Churn Prediction',
+        'title': 'Logistics Optimization Algorithm',
         'description': (
-            'ML model predicting customer churn with 92% accuracy, '
-            'reducing retention costs by 30%.'
+            'Implementation of optimization models for a core logistics algorithm determining '
+            'key values for seller strategy classification. Replaced experience-based decisions '
+            'with ML-driven recommendations using mathematical optimization.'
         ),
-        'tech': ['Python', 'Scikit-learn', 'XGBoost', 'SQL'],
-        'impact': '30% reduction in retention costs',
-        'url': 'https://github.com/brayanksenhuck/churn-prediction',
+        'tech': ['Python', 'Optimization', 'PySpark', 'GCP', 'AWS'],
+        'impact': 'Replaced ad-hoc analysis with data-driven seller strategy optimization',
+        'url': 'https://github.com/brayanksenhuck',
         'image': 'project1.jpg'
     },
     {
-        'title': 'Sales Forecasting Dashboard',
+        'title': 'Customer Probability Classification Model',
         'description': (
-            'Real-time sales forecasting system with interactive dashboards '
-            'for business decision-making.'
+            'Classification models estimating customer probability of adopting a product. '
+            'Addressed class imbalance using specialized strategies and behavioral analysis '
+            'modeling instead of point-in-time snapshots.'
         ),
-        'tech': ['Python', 'Prophet', 'Plotly', 'PostgreSQL'],
-        'impact': 'Improved forecast accuracy by 25%',
-        'url': 'https://github.com/brayanksenhuck/sales-forecast',
+        'tech': ['Python', 'Scikit-learn', 'XGBoost', 'PySpark', 'AWS'],
+        'impact': 'Improved product adoption prediction accuracy by modeling customer behavior',
+        'url': 'https://github.com/brayanksenhuck',
         'image': 'project2.jpg'
     },
     {
-        'title': 'NLP Sentiment Analysis',
+        'title': 'Industrial Accident Prediction Algorithm',
         'description': (
-            'Sentiment analysis pipeline processing 100K+ customer reviews '
-            'to extract actionable insights.'
+            'Developed open-source algorithm for predicting accidents in industrial environments. '
+            'Selected among 15 global candidates for Silicon Valley incubator program (4 months, California).'
         ),
-        'tech': ['Python', 'Transformers', 'BERT', 'AWS'],
-        'impact': 'Processed 100K+ reviews',
-        'url': 'https://github.com/brayanksenhuck/sentiment-analysis',
+        'tech': ['Python', 'Machine Learning', 'Industrial IoT', 'Data Analysis'],
+        'impact': 'Predictive model for industrial safety - Silicon Valley incubator program',
+        'url': 'https://github.com/brayanksenhuck',
         'image': 'project3.jpg'
+    },
+    {
+        'title': 'Quality Parameter Estimation System',
+        'description': (
+            'ML models estimating product quality parameters during production. Reduced wait time '
+            'from months to hours. Applied time-series analysis, distribution comparisons, and '
+            'decision tree models with PyCaret for model selection.'
+        ),
+        'tech': ['Python', 'Spark', 'Time Series', 'Decision Trees', 'PyCaret'],
+        'impact': 'Reduced quality parameter estimation from months to hours',
+        'url': 'https://github.com/brayanksenhuck',
+        'image': 'project4.jpg'
+    },
+    {
+        'title': 'No-Show Prediction for Car Rental',
+        'description': (
+            'Machine learning model determining probability of customers making reservations but '
+            'not picking up vehicles. Developed risk scoring system to enable strategic changes.'
+        ),
+        'tech': ['Python', 'Machine Learning', 'Classification', 'Power BI'],
+        'impact': 'Enabled data-driven strategy changes through risk scoring system',
+        'url': 'https://github.com/brayanksenhuck',
+        'image': 'project5.jpg'
+    },
+    {
+        'title': 'E-commerce User Behavior Analysis',
+        'description': (
+            'Analysis of user behavior for users searching products but not completing purchases. '
+            'Utilized Google Analytics tracking, Hotjar, surveys and A/B testing to validate hypotheses.'
+        ),
+        'tech': ['Google Analytics', 'Hotjar', 'A/B Testing', 'Data Analysis', 'Power BI'],
+        'impact': 'Identified conversion barriers through behavior analysis and testing',
+        'url': 'https://github.com/brayanksenhuck',
+        'image': 'project6.jpg'
     }
 ]
