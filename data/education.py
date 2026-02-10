@@ -3,7 +3,7 @@
 EDUCATION = [
     {
         'degree': 'MBA in Data Science and Analytics',
-        'institution': 'USP/Esalq (Universidade de São Paulo)',
+        'institution': 'Universidade de São Paulo USP/Esalq)',
         'period': 'May 2023 - December 2024',
         'image': 'images/education/mba.jpg',
         'description': (
@@ -33,9 +33,9 @@ EDUCATION = [
     },
     {
         'degree': 'Bachelor of Engineering',
-        'institution': 'University of Toronto',
+        'institution': 'University of Toronto (UofT)',
         'period': '2013 - 2015',
-        'image': 'images/education/IBM.jpg',
+        'image': 'images/education/diploma_UOFT.jpg',
         'description': (
             'International exchange program. Two-year engineering studies '
             'at University of Toronto, Canada.'
@@ -48,7 +48,7 @@ EDUCATION = [
     },
     {
         'degree': 'Bachelor of Engineering - Control and Automation',
-        'institution': 'IFSP (Instituto Federal de Educação, Ciência e Tecnologia de São Paulo)',
+        'institution': 'Instituto Federal de Educação, Ciência e Tecnologia de São Paulo (IFSP)',
         'period': '2010 - 2016',
         'image': 'images/education/diploma_federal.jpg',
         'description': (
