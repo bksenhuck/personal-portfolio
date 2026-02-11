@@ -17,7 +17,21 @@ def create_app(config_name=None):
     if config_name is None:
         config_name = os.environ.get('FLASK_ENV', 'default')
 
-    app = Flask(__name__)
+    # Serve frontend static files from the `frontend` folder so the root
+    # domain returns the SPA while API endpoints remain under /api/*.
+    # Use an absolute path for static_folder so deploys with different
+    # working directories still find the frontend files.
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    frontend_path = os.path.join(base_dir, 'frontend')
+    app = Flask(__name__, static_folder=frontend_path, static_url_path='')
+    # Log static folder info to help diagnose missing/static-file deploy issues
+    try:
+        files = os.listdir(frontend_path)
+    except Exception as e:
+        files = None
+        app.logger.warning('Could not list frontend static folder %s: %s', frontend_path, e)
+    app.logger.info('Static folder path: %s', frontend_path)
+    app.logger.info('Static folder contents: %s', files if files is not None else 'unavailable')
     app.config.from_object(config[config_name])
 
     CORS(app, resources={
@@ -35,6 +49,16 @@ def create_app(config_name=None):
 def register_api_routes(app):
     @app.route('/', methods=['GET'])
     def index():
+        # Serve the frontend index.html at the site root using an absolute path.
+        # If the file is missing in the deployed bundle, return the JSON docs
+        # so we can see a clear fallback and log the problem.
+        index_path = os.path.join(app.static_folder, 'index.html')
+        if os.path.exists(index_path):
+            try:
+                return app.send_file(index_path)
+            except Exception as e:
+                app.logger.error('Failed to send index.html: %s', e)
+        app.logger.warning('index.html not found at %s; returning API docs fallback', index_path)
         return jsonify({
             "service": "Portfolio API",
             "version": "1.0.0",
@@ -47,7 +71,16 @@ def register_api_routes(app):
                 "education": "/api/education"
             },
             "docs": "All endpoints return JSON. Access /api/* routes for data."
-        })
+        }), 200
+
+    # SPA fallback: serve index.html for any non-API path so client-side
+    # routing works and the root doesn't accidentally return JSON docs.
+    @app.route('/<path:requested>')
+    def spa_fallback(requested):
+        # If the path starts with 'api/', return 404 so API routes still work
+        if requested.startswith('api/'):
+            return jsonify({"error": "Not found"}), 404
+        return app.send_static_file('index.html')
 
     @app.route('/api/health', methods=['GET'])
     def health():
