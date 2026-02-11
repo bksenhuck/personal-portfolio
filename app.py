@@ -5,7 +5,7 @@ as a module-level variable. This keeps the root `app.py` as the single
 entrypoint required by some hosting providers.
 """
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_file
 from flask_cors import CORS
 
 # Import backend package modules
@@ -55,7 +55,7 @@ def register_api_routes(app):
         index_path = os.path.join(app.static_folder, 'index.html')
         if os.path.exists(index_path):
             try:
-                return app.send_file(index_path)
+                return send_file(index_path)
             except Exception as e:
                 app.logger.error('Failed to send index.html: %s', e)
         app.logger.warning('index.html not found at %s; returning API docs fallback', index_path)
