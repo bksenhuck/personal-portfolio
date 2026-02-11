@@ -744,7 +744,7 @@ body {
 }
 
 .experience-list {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -823,7 +823,7 @@ body {
 
 /* Academic Experience - Within Experience Section */
 .academic-list {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     margin-bottom: -2rem;
 }
@@ -922,6 +922,14 @@ body {
     border-color: var(--accent);
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
     transform: translateY(-5px);
+}
+
+/* Ensure experience / academic / education cards share the same minimum height
+   so they appear consistent across sections */
+.experience-item,
+.academic-item,
+.education-item {
+    min-height: 260px;
 }
 
 .edu-image {
@@ -1181,6 +1189,45 @@ body {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Contact links (inline buttons with icons) */
+.contact-links {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--accent);
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.18s ease;
+}
+
+.contact-btn i {
+    font-size: 1.05rem;
+    color: var(--accent);
+}
+
+.contact-btn:hover {
+    color: var(--text-primary);
+    background-color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.contact-btn:hover i {
+    color: var(--text-primary);
 }
 
 .btn-primary {
