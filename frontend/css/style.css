@@ -744,8 +744,12 @@ body {
 }
 
 .experience-list {
+    /* flexible width for different screen sizes */
+    width: min(95%, 900px);
     max-width: 900px;
     margin: 0 auto;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
 }
 
 .experience-item {
@@ -823,9 +827,13 @@ body {
 
 /* Academic Experience - Within Experience Section */
 .academic-list {
+    /* flexible width for different screen sizes */
+    width: min(95%, 900px);
     max-width: 900px;
     margin: 0 auto;
     margin-bottom: -2rem;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
 }
 
 .academic-item {
@@ -903,8 +911,12 @@ body {
 }
 
 .education-list {
+    /* education already 900px, make it flexible too */
+    width: min(95%, 900px);
     max-width: 900px;
     margin: 0 auto;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
 }
 
 .education-item {
@@ -1415,6 +1427,38 @@ section.section-hidden {
 
     .container {
         padding: 0 1.5rem;
+    }
+
+    /* Make experience/academic/education cards stack vertically on small screens */
+    .experience-item,
+    .academic-item,
+    .education-item {
+        flex-direction: column;
+        min-height: auto; /* allow height to grow with content */
+        align-items: stretch;
+    }
+
+    .exp-image,
+    .academic-image,
+    .edu-image {
+        width: 100%;
+        flex: 0 0 auto;
+        height: 220px; /* fixed visual band for images on mobile */
+    }
+
+    .exp-image img,
+    .academic-image img,
+    .edu-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .exp-content,
+    .academic-content,
+    .edu-content {
+        width: 100%;
+        padding: 1.25rem;
     }
 
     .hero-buttons {
