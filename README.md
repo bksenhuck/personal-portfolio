@@ -1,301 +1,243 @@
-# Personal Portfolio - Data Scientist
+# Personal Portfolio
 
-Professional portfolio website built with Flask, featuring responsive design, multilingual support, and SEO optimization.
+Modern, decoupled portfolio architecture with static frontend and REST API backend, optimized for instant loading and zero cold-start delays on the user interface.
 
-## 🚀 Technologies
+## Architecture
 
-- Python 3.x
-- Flask 3.0.0
-- Pure CSS (no frameworks)
-- HTML5
-- Vanilla JavaScript
+This project uses a separated architecture pattern:
 
-## ✨ Features
+- **Frontend**: Static HTML/CSS/JavaScript deployed on CDN (Vercel/Netlify)
+- **Backend**: Flask REST API deployed on Render
 
-- ✅ **Fixed header** with smooth, animated navigation
-- ✅ **Light/Dark theme** with localStorage persistence
-- ✅ **Multi-language support** (Portuguese, English, Spanish)
-- ✅ **Project carousel** simplified (1 project at a time)
-- ✅ **Education section** with academic highlights
-- ✅ Responsive design (mobile-first)
-- ✅ Smooth CSS animations with scroll reveal
-- ✅ SEO optimized
-- ✅ Modular architecture (PEP8 compliant)
-- ✅ Production ready
+### Benefits
 
-## 📁 Project Structure
+- Instant page load (static assets served from CDN)
+- API cold starts don't block the UI
+- Independent scaling and deployment
+- Better developer experience with clear separation of concerns
+
+### Structure
 
 ```
 personal-portfolio/
-├── app.py              # Flask application (Application Factory Pattern)
-├── config.py           # Application configuration
-├── requirements.txt    # Python dependencies
-├── setup.cfg          # PEP8/Flake8 configuration
-├── Procfile           # Heroku deployment config
-├── data/              # Data modules (separated by domain)
-│   ├── __init__.py    # Exports all data
-│   ├── profile.py     # Personal information
-│   ├── skills.py      # Technical skills
-│   ├── projects.py    # Featured projects
-│   ├── experience.py  # Professional experience
-│   └── education.py   # Educational background
-├── templates/
-│   └── index.html     # Main template
-├── static/
+├── backend/                  # Flask REST API
+│   ├── app.py               # API endpoints
+│   ├── config.py            # Configuration
+│   ├── requirements.txt     # Python dependencies
+│   ├── Procfile             # Render deployment config
+│   └── data/                # Data modules
+│       ├── __init__.py
+│       ├── profile.py
+│       ├── skills.py
+│       ├── projects.py
+│       ├── experience.py
+│       ├── education.py
+│       └── fun_facts.py
+│
+├── frontend/                 # Static website
+│   ├── index.html           # Static HTML (no templates)
+│   ├── vercel.json          # Vercel configuration
+│   ├── netlify.toml         # Netlify configuration
 │   ├── css/
-│   │   └── style.css  # Responsive styles
+│   │   └── style.css        # Responsive styles
 │   ├── js/
-│   │   └── main.js    # Carousel, theme, and i18n logic
-│   └── images/        # Visual assets
-├── translations/      # Internationalization files
-│   ├── pt.json        # Portuguese
-│   ├── en.json        # English
-│   └── es.json        # Spanish
-└── README.md
+│   │   ├── api.js           # HTTP client with caching
+│   │   ├── main-api.js      # Main application
+│   │   ├── carousel.js      # Image carousel
+│   │   ├── navigation.js    # Menu and URL hash handling
+│   │   ├── theme.js         # Dark/Light mode
+│   │   └── animations.js    # Scroll animations
+│   ├── images/              # Static assets
+│   └── translations/        # i18n JSON files
+│       ├── en.json
+│       ├── es.json
+│       └── pt.json
+│
+└── README.md                # This file
 ```
 
-## 🎯 Architecture
+## Features
 
-### Design Patterns Implemented
-- **Application Factory Pattern**: `create_app()` function for flexibility
-- **Separation of Concerns**: Data separated into independent modules
-- **PEP 8 Compliance**: Code following Python best practices
-- **Configuration Management**: Configurable dev/prod environments
-- **Modular Design**: Easy maintenance and scalability
+- **Instant Loading**: Frontend loads immediately from CDN
+- **Responsive Design**: Mobile-first approach
+- **Dark/Light Theme**: Persistent theme preference
+- **Multilingual**: English, Spanish, Portuguese
+- **SEO Optimized**: Meta tags and semantic HTML
+- **Modular Codebase**: Clean separation of concerns
+- **Client-side Caching**: 5-minute cache for API responses
+- **Fallback Support**: Offline data support for resilience
 
-## 🔧 Installation and Local Setup (Windows)
+## Technology Stack
 
-### 1. Clone or download the project
+### Backend
+- Python 3.x
+- Flask 3.0.0
+- Flask-CORS 4.0.0
+- Gunicorn 21.2.0
 
-```cmd
-cd C:\Users\your-user\Documents\projects\personal-portfolio
+### Frontend
+- Vanilla JavaScript (ES6 modules)
+- CSS3 (no frameworks)
+- HTML5
+
+### Deployment
+- Backend: Render (Web Service)
+- Frontend: Vercel or Netlify (Static Site)
+
+## Local Development
+
+### Backend
+
+1. Navigate to backend directory:
+```bash
+cd backend
 ```
 
-### 2. Create and activate a virtual environment
-
-```cmd
-python -m venv venv
-venv\Scripts\activate
-```
-
-### 3. Install dependencies
-
-```cmd
+2. Install dependencies:
+```bash
 pip install -r requirements.txt
 ```
 
-### 4. Run the project
-
-```cmd
+3. Run the API:
+```bash
 python app.py
 ```
 
-Or using Flask CLI:
+API will be available at `http://localhost:5001`
 
-```cmd
-flask run
-```
+### Frontend
 
-Access: http://localhost:5000
-
-## 🎨 Customization
-
-### Edit Personal Information
-
-Edit the `data/profile.py` file:
-
-```python
-PROFILE = {
-    'name': 'Your Name',
-    'title': 'Your Professional Title',
-    'bio': 'Your professional biography',
-    'email': 'your@email.com',
-    'github': 'https://github.com/your-username',
-    'linkedin': 'https://linkedin.com/in/your-profile',
-    'photo': 'profile.jpg',  # Place in static/images/
-    'domain': 'yourdomain.dev'
-}
-```
-
-### Add/Edit Projects
-
-Edit the `data/projects.py` file:
-
-```python
-PROJECTS = [
-    {
-        'title': 'Project Name',
-        'description': 'Detailed project description',
-        'tech': ['Python', 'Flask', 'SQL'],
-        'impact': 'Result/impact achieved',
-        'url': 'https://github.com/username/project',
-        'image': 'project.jpg'  # Place in static/images/
-    }
-]
-```
-
-### Edit Skills
-
-Edit the `data/skills.py` file:
-
-```python
-SKILLS = [
-    {
-        'name': 'Python',
-        'level': 95,  # 0-100
-        'category': 'programming'
-    }
-]
-```
-
-### Edit Experience
-
-Edit the `data/experience.py` file:
-
-```python
-EXPERIENCE = [
-    {
-        'role': 'Your Job Title',
-        'company': 'Company Name',
-        'period': '2020 - Present',
-        'description': 'Description of your responsibilities'
-    }
-]
-```
-
-### Edit Education
-
-Edit the `data/education.py` file:
-
-```python
-EDUCATION = [
-    {
-        'degree': 'Master of Science in Data Science',
-        'institution': 'University Name',
-        'period': '2020 - 2022',
-        'description': 'Course description and field of study',
-        'highlights': [
-            'GPA: 3.9/4.0',
-            'Thesis: Thesis Title',
-            'Awards: Awards/Honors'
-        ]
-    }
-]
-```
-
-### Edit Translations
-
-Translations are stored in separate JSON files in the `translations/` folder:
-
-**translations/pt.json:**
-```json
-{
-  "nav": {
-    "about": "Sobre",
-    "skills": "Habilidades",
-    ...
-  },
-  "hero": {
-    "greeting": "Olá, sou",
-    "bio": "Your bio here...",
-    ...
-  }
-}
-```
-
-Edit each file (`pt.json`, `en.json`, `es.json`) to update translations. The structure is the same in all languages; only the values change.
-
-### Theme Toggle
-
-Theme (light/dark) is controlled by:
-- Header button (sun/moon icon)
-- Saves preference to localStorage
-- Automatically applies on next visit
-
-### Adding Images
-
-Place your images in the `static/images/` folder:
-
-- `profile.jpg` - Profile photo (recommended 150x150px)
-- `project1.jpg`, `project2.jpg` - Project banners (recommended 400x250px)
-
-## 🌐 Deploy on Render
-
-### 1. Login to Render
-
-Visit: https://render.com
-
-### 2. New Web Service
-
-- Click **New +** → **Web Service**
-- Connect your GitHub/GitLab repository
-- Or upload files manually
-
-### 3. Configuration
-
-```
-Name: your-portfolio
-Environment: Python 3
-Build Command: pip install -r requirements.txt
-Start Command: gunicorn app:app
-```
-
-### 4. Environment Variables (optional)
-
-If needed, add:
-
-```
-PYTHON_VERSION=3.11
-```
-
-### 5. Deploy
-
-Click **Create Web Service**
-
-Your site will be available at: `https://your-portfolio.onrender.com`
-
-## 📦 Deploy on Other Platforms
-
-### Heroku
-
+1. Navigate to frontend directory:
 ```bash
-heroku login
-heroku create your-portfolio
-git push heroku main
+cd frontend
 ```
 
-### PythonAnywhere
+2. Start a local server:
+```bash
+python -m http.server 8000
+```
 
-1. Upload files via FTP or Git
-2. Configure a Web App (Flask)
-3. Point to `app.py`
+Frontend will be available at `http://localhost:8000`
 
-### Vercel
+## API Endpoints
 
+All endpoints are prefixed with `/api`:
+
+- `GET /api/health` - Health check
+- `GET /api/all` - All portfolio data (recommended for initial load)
+- `GET /api/portfolio` - Profile, skills, and fun facts
+- `GET /api/projects` - Featured projects
+- `GET /api/experience` - Professional experience
+- `GET /api/education` - Educational background
+
+All responses are JSON formatted.
+
+## Deployment
+
+### Backend (Render)
+
+1. Connect your repository to Render
+2. Configure:
+   - Root Directory: `backend`
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `gunicorn app:app`
+   - Environment: Python 3
+
+3. After deployment, note the API URL
+
+### Frontend (Vercel)
+
+1. Install Vercel CLI:
 ```bash
 npm install -g vercel
-vercel
 ```
 
-## 🎯 Highlights
+2. Deploy:
+```bash
+cd frontend
+vercel --prod
+```
 
-✅ Minimalist dark design  
-✅ Fully responsive  
-✅ Smooth CSS animations  
-✅ Production ready  
-✅ No database required  
-✅ Easy customization  
-✅ SEO-friendly  
-✅ Professional code
+3. Update `window.ENV.API_URL` in `index.html` with your backend URL
 
-## 📝 License
+### Frontend (Netlify)
 
-Free for personal and commercial use.
+1. Connect repository to Netlify
+2. Configure:
+   - Base directory: `frontend`
+   - Build command: (leave empty)
+   - Publish directory: `.`
 
-## 🤝 Support
+3. Update `window.ENV.API_URL` in `index.html` with your backend URL
 
-For questions or issues, please open an issue on GitHub.
+### CORS Configuration
 
----
+After deploying the frontend, update the CORS origins in `backend/app.py`:
 
-**Developed with ❤️ and Flask**
+```python
+CORS(app, resources={
+    r"/api/*": {
+        "origins": [
+            "http://localhost:8000",
+            "https://your-frontend.vercel.app"  # Add your production URL
+        ],
+        "methods": ["GET", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
+})
+```
+
+## Configuration
+
+### API URL
+
+Set the backend API URL in `frontend/index.html`:
+
+```html
+<script>
+window.ENV = {
+    API_URL: 'https://your-api.onrender.com'
+};
+</script>
+```
+
+### Fallback Data
+
+Optional: Add fallback data to `window.FALLBACK_DATA` in `index.html` for offline support.
+
+## Performance
+
+- **Frontend Load Time**: < 1 second (static assets on CDN)
+- **API Response Time**: < 500ms (after warm-up)
+- **Cold Start**: API only, does not block UI (20-40s on Render free tier)
+- **Client Cache**: 5-minute TTL for API responses
+
+## Testing
+
+### Backend
+```bash
+cd backend
+python app.py
+curl http://localhost:5001/api/health
+```
+
+### Frontend
+```bash
+cd frontend
+python -m http.server 8000
+# Visit: http://localhost:8000
+```
+
+## Monitoring
+
+Recommended: Set up uptime monitoring (e.g., UptimeRobot) to ping your backend API every 10 minutes to prevent cold starts.
+
+Example endpoint: `https://your-api.onrender.com/api/health`
+
+## License
+
+All rights reserved.
+
+## Contact
+
+For inquiries, please reach out via the contact information on the website.

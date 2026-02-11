@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Brayan Ksenhuck – Data Scientist | Machine Learning & Analytics</title>
+    <meta name="description" content="Brayan Ksenhuck is a Data Scientist specializing in Machine Learning, Python, and data-driven solutions. Portfolio showcasing ML projects and analytics expertise.">
+    <meta name="keywords" content="Brayan Ksenhuck, Data Scientist, Machine Learning, Python, SQL, Data Analytics, Data Visualization, AWS, Statistics">
+    <meta name="author" content="Brayan C Ksenhuck">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Brayan Ksenhuck – Data Scientist">
+    <meta property="og:description" content="Data Scientist specializing in Machine Learning and data-driven solutions. View my portfolio and projects.">
+    <meta property="og:url" content="https://brayanksenhuck.dev">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://brayanksenhuck.dev/images/profile.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brayan Ksenhuck – Data Scientist">
+    <meta name="twitter:description" content="Data Scientist specializing in Machine Learning and data-driven solutions.">
+    <meta name="twitter:image" content="https://brayanksenhuck.dev/images/profile.jpg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- API Configuration -->
+    <script>
+        // Configure API endpoint (set via build process or environment)
+        window.ENV = {
+            API_URL: 'http://localhost:5000'  // Local development
+        };
+        
+        // Optional: Fallback data in case API is unavailable
+        // This allows the site to work even if backend is cold starting
+        window.FALLBACK_DATA = {
+            'all': {
+                profile: {
+                    name: 'Brayan Ksenhuck',
+                    title: 'Senior Data Scientist',
+                    bio: 'Data Scientist with expertise in ML and analytics',
+                    email: 'contact@brayanksenhuck.dev',
+                    github: 'https://github.com/brayanksenhuck',
+                    linkedin: 'https://linkedin.com/in/brayanksenhuck',
+                    photo: 'profile.jpg'
+                },
+                projects: [],
+                experience: [],
+                education: [],
+                skills: [],
+                fun_facts: []
+            }
+        };
+    </script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="nav-brand">Brayan Ksenhuck</a>
+            
+            <div class="nav-links">
+                <a href="#about" data-i18n="nav.about">Sobre</a>
+                <a href="#projects" data-i18n="nav.projects">Projetos</a>
+                <div class="experience-dropdown nav-experience-hover">
+                    <a href="#experience" class="experience-link">
+                        <span data-i18n="nav.experience">Experiência</span>
+                        <i class="fas fa-chevron-down" style="font-size:0.8em;"></i>
+                    </a>
+                    <div class="experience-dropdown-content">
+                        <a href="#experience">Profissional</a>
+                        <a href="#academic-experience">Acadêmica</a>
+                    </div>
+                </div>
+                <a href="#education" data-i18n="nav.education">Educação</a>
+                <a href="#contact" data-i18n="nav.contact">Contato</a>
+            </div>
+            
+            <div class="nav-controls">
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                
+                <!-- Language Selector -->
+                <div class="lang-selector">
+                    <button class="lang-button" onclick="document.querySelector('.lang-dropdown').classList.toggle('active')">
+                        <span class="current-lang">🇧🇷</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option active" data-lang="pt" onclick="changeLanguage('pt')">
+                            🇧🇷 Português
+                        </button>
+                        <button class="lang-option" data-lang="en" onclick="changeLanguage('en')">
+                            🇺🇸 English
+                        </button>
+                        <button class="lang-option" data-lang="es" onclick="changeLanguage('es')">
+                            🇪🇸 Español
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- Data populated by JavaScript from API -->
+    <header id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="images/profile.jpg" 
+                     alt="Brayan Ksenhuck - Data Scientist profile photo" 
+                     class="profile-img"
+                     onerror="this.style.display='none'">
+                <h1 class="hero-title">
+                    <span data-i18n="hero.greeting">Olá, sou</span>
+                    <!-- Name inserted by JS -->
+                </h1>
+                <p class="hero-subtitle"><!-- Title inserted by JS --></p>
+                <p class="hero-bio" data-i18n="hero.bio">Data Scientist with expertise in ML</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary" data-i18n="hero.cta_projects">Ver Projetos</a>
+                    <a href="#contact" class="btn-secondary" data-i18n="hero.cta_contact">Entrar em Contato</a>
+                </div>
+                <div class="social-links">
+                    <a href="mailto:contact@example.com" class="social-link" title="Email Brayan Ksenhuck" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener" class="social-link" title="GitHub Profile" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener" class="social-link" title="LinkedIn Profile" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title" data-i18n="about.title">Sobre Mim</h2>
+                <div class="about-content">
+                    <p data-i18n="about.text1">I'm a Data Scientist with expertise in building machine learning models and extracting actionable insights from complex datasets.</p>
+                    <p data-i18n="about.text2">With a strong foundation in statistics, programming, and cloud technologies, I transform raw data into strategic assets.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fun Facts Section -->
+        <!-- Content populated by JavaScript from API -->
+        <section id="fun-facts" class="fun-facts">
+            <div class="container">
+                <h2 class="section-title" data-i18n="facts.title">Curiosidades Sobre Mim</h2>
+                <div class="fun-facts-grid">
+                    <!-- Items inserted by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <!-- Projects populated by JavaScript from API -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title" data-i18n="projects.title">Projetos em Destaque</h2>
+                <div class="carousel-container">
+                    <button class="carousel-btn carousel-prev" aria-label="Previous project">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track">
+                            <!-- Project cards inserted by JavaScript -->
+                        </div>
+                    </div>
+                    <button class="carousel-btn carousel-next" aria-label="Next project">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="carousel-indicators">
+                    <!-- Dots inserted by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <!-- Experience items populated by JavaScript from API -->
+        <section id="experience" class="experience">
+            <div class="container">
+                <h2 class="section-title" data-i18n="experience.title">Experiência</h2>
+                
+                <!-- Professional Experience -->
+                <div class="experience-subtitle">
+                    <i class="fas fa-briefcase"></i>
+                    <h3 data-i18n="experience.professional">Experiência Profissional</h3>
+                </div>
+                <div class="experience-list">
+                    <!-- Items inserted by JavaScript -->
+                </div>
+
+                <!-- Academic Experience -->
+                <div class="experience-subtitle academic-subtitle">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3 data-i18n="academic.title">Experiência Acadêmica</h3>
+                </div>
+                <div class="academic-list" id="academic-experience">
+                    <!-- Items inserted by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <!-- Education items populated by JavaScript from API -->
+        <section id="education" class="education">
+            <div class="container">
+                <h2 class="section-title" data-i18n="education.title">Formação Acadêmica</h2>
+                <div class="education-list">
+                    <!-- Items inserted by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title" data-i18n="contact.title">Contato</h2>
+                <p class="contact-text" data-i18n="contact.text">
+                    Interessado em colaborar ou discutir projetos de ciência de dados? 
+                    Entre em contato!
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:contact@example.com" class="contact-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span data-i18n="contact.email">Email</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener" class="contact-btn">
+                        <i class="fab fa-linkedin"></i>
+                        <span data-i18n="contact.linkedin">LinkedIn</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener" class="contact-btn">
+                        <i class="fab fa-github"></i>
+                        <span data-i18n="contact.github">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Brayan Ksenhuck. <span data-i18n="footer.rights">All rights reserved.</span></p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript Modules -->
+    <script type="module" src="js/main-api.js"></script>
+</body>
+</html>

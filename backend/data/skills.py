@@ -1,4 +1,9 @@
-"""Technical skills and proficiency levels."""
+"""Technical skills and proficiency levels.
+
+Organized by categories: ml, programming, analysis, database,
+big_data, cloud, visualization, tools, and language.
+Proficiency levels range from 0-100.
+"""
 
 SKILLS = [
     {
