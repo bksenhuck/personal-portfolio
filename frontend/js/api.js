@@ -6,8 +6,9 @@
 
 // API Configuration
 const API_CONFIG = {
-    // Use environment variable or fallback to localhost for development
-    baseURL: window.ENV?.API_URL || 'http://localhost:5001',
+    // Use environment variable or fallback to the page origin (works in production
+    // when backend serves the frontend) or localhost for non-browser environments
+    baseURL: window.ENV?.API_URL || (typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}` : 'http://localhost:5001'),
     timeout: 10000,
     cacheExpiry: 5 * 60 * 1000 // 5 minutes
 };
