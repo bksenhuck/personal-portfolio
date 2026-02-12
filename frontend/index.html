@@ -39,8 +39,11 @@
     <!-- API Configuration -->
     <script>
         // Configure API endpoint (set via build process or environment)
+        // In production we want the client to use the same origin as the page,
+        // so keep API_URL null. For local development you can set this to
+        // "http://localhost:8000" if you serve frontend separately.
         window.ENV = {
-            API_URL: 'http://localhost:8000'  // Local development (backend)
+            API_URL: null
         };
         
         // Optional: Fallback data in case API is unavailable
