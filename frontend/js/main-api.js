@@ -56,14 +56,21 @@ function renderPortfolioData(data) {
         }
     }
     
-    // Render fun facts (support both metric facts {label,value} and descriptive cards)
+    // Render fun facts (support normalized backend `type`: 'metric' or 'card')
     if (fun_facts && fun_facts.length > 0) {
         const funFactsGrid = document.querySelector('.fun-facts-grid');
         if (funFactsGrid) {
+            const lang = (typeof window !== 'undefined' && localStorage.getItem('language')) ? localStorage.getItem('language') : 'pt';
+            const localize = (field) => {
+                if (!field) return '';
+                if (typeof field === 'object') return field[lang] || field.pt || Object.values(field)[0] || '';
+                return field;
+            };
+
             funFactsGrid.innerHTML = fun_facts.map((fact, idx) => {
-                // Metric style: label + value
-                if (fact && fact.label && typeof fact.value !== 'undefined') {
-                    const label = typeof fact.label === 'object' ? (fact.label[localStorage.getItem('language') || 'pt'] || fact.label.pt) : fact.label;
+                // Use explicit type when provided
+                if (fact && fact.type === 'metric') {
+                    const label = localize(fact.label);
                     return `
                         <article class="fun-fact-item metric">
                             <div class="metric-value">${fact.value}</div>
@@ -72,29 +79,47 @@ function renderPortfolioData(data) {
                     `;
                 }
 
-                // Descriptive card style
-                // Determine alternating position: prefer explicit `fact.position`, otherwise alternate by index
-                const position = fact.position || (idx % 2 === 0 ? 'left' : 'right');
-
-                // Normalize image path: allow either 'images/..' or plain filename
-                let imgSrc = '';
-                if (fact.image) {
-                    imgSrc = fact.image;
-                    if (!imgSrc.startsWith('http') && !imgSrc.startsWith('/')) {
-                        // keep relative path as-is; ensure it doesn't accidentally become 'undefined'
-                        imgSrc = imgSrc;
-                    }
+                if (fact && fact.type === 'card') {
+                    const position = fact.position || (idx % 2 === 0 ? 'left' : 'right');
+                    const title = localize(fact.title);
+                    const desc = localize(fact.description);
+                    let imgSrc = '';
+                    if (fact.image) imgSrc = fact.image;
+                    const imgHtml = imgSrc ? `<div class="fact-image"><img src="${imgSrc}" alt="${title}" onerror="this.style.display='none'"></div>` : '';
+                    return `
+                        <article class="fun-fact-item fun-fact-${position}">
+                            ${imgHtml}
+                            <div class="fact-content">
+                                ${title ? `<h3 class="fact-title">${title}</h3>` : ''}
+                                ${desc ? `<p class="fact-description">${desc}</p>` : ''}
+                            </div>
+                        </article>
+                    `;
                 }
 
-                const imgHtml = imgSrc ? `<div class="fact-image"><img src="${imgSrc}" alt="${fact.title || ''}" onerror="this.style.display='none'"></div>` : '';
-                const title = fact.title || '';
-                const desc = fact.description || '';
+                // Fallback for legacy items: metric detection
+                if (fact && fact.label && typeof fact.value !== 'undefined') {
+                    const label = localize(fact.label);
+                    return `
+                        <article class="fun-fact-item metric">
+                            <div class="metric-value">${fact.value}</div>
+                            <div class="metric-label">${label}</div>
+                        </article>
+                    `;
+                }
+
+                // Generic fallback: render as a simple card
+                const fallbackPosition = fact.position || (idx % 2 === 0 ? 'left' : 'right');
+                const fallbackTitle = localize(fact.title || fact.label);
+                const fallbackDesc = localize(fact.description);
+                const fallbackImg = fact.image || '';
+                const fallbackImgHtml = fallbackImg ? `<div class="fact-image"><img src="${fallbackImg}" alt="${fallbackTitle}" onerror="this.style.display='none'"></div>` : '';
                 return `
-                    <article class="fun-fact-item fun-fact-${position}">
-                        ${imgHtml}
+                    <article class="fun-fact-item fun-fact-${fallbackPosition}">
+                        ${fallbackImgHtml}
                         <div class="fact-content">
-                            ${title ? `<h3 class="fact-title">${title}</h3>` : ''}
-                            ${desc ? `<p class="fact-description">${desc}</p>` : ''}
+                            ${fallbackTitle ? `<h3 class="fact-title">${fallbackTitle}</h3>` : ''}
+                            ${fallbackDesc ? `<p class="fact-description">${fallbackDesc}</p>` : ''}
                         </div>
                     </article>
                 `;
