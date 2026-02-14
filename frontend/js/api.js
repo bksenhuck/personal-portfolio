@@ -7,8 +7,19 @@
 // API Configuration
 const API_CONFIG = {
     // Use environment variable or fallback to the page origin (works in production
-    // when backend serves the frontend) or localhost for non-browser environments
-    baseURL: window.ENV?.API_URL || (typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}` : 'http://localhost:5001'),
+    // when backend serves the frontend). Prefer 127.0.0.1 instead of 'localhost'
+    // because some environments resolve 'localhost' to IPv6 (::1) which can
+    // point to a different server and cause 404s.
+    baseURL: window.ENV?.API_URL || (function(){
+        if (typeof window === 'undefined') return 'http://127.0.0.1:5001';
+        const proto = window.location.protocol || 'http:';
+        let host = window.location.hostname || '127.0.0.1';
+        // normalize localhost to IPv4 loopback to avoid IPv6 resolution issues
+        if (host === 'localhost') host = '127.0.0.1';
+        // include port if present
+        const port = window.location.port ? `:${window.location.port}` : '';
+        return `${proto}//${host}${port}`;
+    })(),
     timeout: 10000,
     cacheExpiry: 5 * 60 * 1000 // 5 minutes
 };
