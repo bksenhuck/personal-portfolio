@@ -90,15 +90,19 @@ async function fetchWithTimeout(url, options = {}) {
  */
 async function getCached(endpoint, useFallback = true) {
     // Try cache first
-    const cached = cache.get(endpoint);
+    const lang = (typeof window !== 'undefined' && localStorage.getItem('language')) ? localStorage.getItem('language') : 'pt';
+    const cacheKey = `${endpoint}::${lang}`;
+    const cached = cache.get(cacheKey);
     if (cached) {
         return cached;
     }
     
     try {
-        const url = `${API_CONFIG.baseURL}/api/${endpoint}`;
+        // Append lang query param so backend can return translated data
+        const base = `${API_CONFIG.baseURL}/api/${endpoint}`;
+        const url = `${base}${base.includes('?') ? '&' : '?'}lang=${encodeURIComponent(lang)}`;
         const data = await fetchWithTimeout(url);
-        cache.set(endpoint, data);
+        cache.set(cacheKey, data);
         return data;
     } catch (error) {
         console.error(`API Error fetching ${endpoint}:`, error.message);
