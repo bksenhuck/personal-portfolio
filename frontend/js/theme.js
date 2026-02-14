@@ -6,6 +6,13 @@
 let translations = {};
 let currentLang = localStorage.getItem('language') || 'pt';
 
+// Map language codes to flag indicators shown in the UI
+const LANG_FLAGS = {
+    pt: '🇧🇷',
+    en: '🇺🇸',
+    es: '🇪🇸'
+};
+
 /**
  * Load translation file for specified language
  */
@@ -16,6 +23,8 @@ async function loadTranslations(lang) {
         applyTranslations();
         currentLang = lang;
         localStorage.setItem('language', lang);
+        // Update the visible language indicator (flag / label)
+        updateLanguageIndicator(lang);
     } catch (error) {
         console.error('Error loading translations:', error);
     }
@@ -96,6 +105,9 @@ export function initLanguageSelector() {
         option.classList.toggle('active', option.getAttribute('data-lang') === currentLang);
     });
 
+    // Ensure the language indicator reflects the current language on init
+    updateLanguageIndicator(currentLang);
+
     // Close language dropdown when clicking outside
     document.addEventListener('click', function(event) {
         const langSelector = document.querySelector('.lang-selector');
@@ -110,3 +122,14 @@ export function initLanguageSelector() {
 // Make functions globally available
 window.toggleTheme = toggleTheme;
 window.changeLanguage = changeLanguage;
+
+/**
+ * Update the language indicator element (`.current-lang`) with a flag
+ * corresponding to the given language code. If the element is not present
+ * we silently ignore.
+ */
+function updateLanguageIndicator(lang) {
+    const el = document.querySelector('.current-lang');
+    if (!el) return;
+    el.textContent = LANG_FLAGS[lang] || el.textContent;
+}
