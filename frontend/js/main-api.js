@@ -56,21 +56,49 @@ function renderPortfolioData(data) {
         }
     }
     
-    // Render fun facts
+    // Render fun facts (support both metric facts {label,value} and descriptive cards)
     if (fun_facts && fun_facts.length > 0) {
         const funFactsGrid = document.querySelector('.fun-facts-grid');
         if (funFactsGrid) {
-            funFactsGrid.innerHTML = fun_facts.map(fact => `
-                <article class="fun-fact-item fun-fact-${fact.position || 'left'}">
-                    <div class="fact-image">
-                        <img src="${fact.image}" alt="${fact.title}">
-                    </div>
-                    <div class="fact-content">
-                        <h3 class="fact-title">${fact.title}</h3>
-                        <p class="fact-description">${fact.description}</p>
-                    </div>
-                </article>
-            `).join('');
+            funFactsGrid.innerHTML = fun_facts.map((fact, idx) => {
+                // Metric style: label + value
+                if (fact && fact.label && typeof fact.value !== 'undefined') {
+                    const label = typeof fact.label === 'object' ? (fact.label[localStorage.getItem('language') || 'pt'] || fact.label.pt) : fact.label;
+                    return `
+                        <article class="fun-fact-item metric">
+                            <div class="metric-value">${fact.value}</div>
+                            <div class="metric-label">${label}</div>
+                        </article>
+                    `;
+                }
+
+                // Descriptive card style
+                // Determine alternating position: prefer explicit `fact.position`, otherwise alternate by index
+                const position = fact.position || (idx % 2 === 0 ? 'left' : 'right');
+
+                // Normalize image path: allow either 'images/..' or plain filename
+                let imgSrc = '';
+                if (fact.image) {
+                    imgSrc = fact.image;
+                    if (!imgSrc.startsWith('http') && !imgSrc.startsWith('/')) {
+                        // keep relative path as-is; ensure it doesn't accidentally become 'undefined'
+                        imgSrc = imgSrc;
+                    }
+                }
+
+                const imgHtml = imgSrc ? `<div class="fact-image"><img src="${imgSrc}" alt="${fact.title || ''}" onerror="this.style.display='none'"></div>` : '';
+                const title = fact.title || '';
+                const desc = fact.description || '';
+                return `
+                    <article class="fun-fact-item fun-fact-${position}">
+                        ${imgHtml}
+                        <div class="fact-content">
+                            ${title ? `<h3 class="fact-title">${title}</h3>` : ''}
+                            ${desc ? `<p class="fact-description">${desc}</p>` : ''}
+                        </div>
+                    </article>
+                `;
+            }).join('');
         }
     }
 }
@@ -247,6 +275,15 @@ async function loadData() {
     }
 }
 
+// Expose helpers for debugging in DevTools
+if (typeof window !== 'undefined') {
+    window.loadData = loadData;
+    window.reloadData = async function() {
+        api.clearCache();
+        await loadData();
+    };
+}
+
 /**
  * Initialize all application features
  */
@@ -272,6 +309,13 @@ function initApp() {
     
     // Handle initial hash on page load
     handleInitialHash();
+
+    // Listen for language changes from the theme module and reload data
+    window.addEventListener('languageChanged', (evt) => {
+        // Clear API cache so we fetch fresh translated data, then reload
+        api.clearCache();
+        loadData();
+    });
 }
 
 // Initialize when DOM is ready

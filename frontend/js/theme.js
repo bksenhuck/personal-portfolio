@@ -84,13 +84,22 @@ function updateThemeIcon(theme) {
 /**
  * Change application language
  */
-export function changeLanguage(lang) {
-    loadTranslations(lang);
+export async function changeLanguage(lang) {
+    // Start loading translations (which will update UI) and wait for it
+    await loadTranslations(lang);
+
+    // Update active option classes and close dropdown
     document.querySelectorAll('.lang-option').forEach(option => {
         option.classList.toggle('active', option.getAttribute('data-lang') === lang);
     });
-    // Close dropdown after selection
     document.querySelector('.lang-dropdown')?.classList.remove('active');
+
+    // Notify other modules that language changed (after translations and localStorage updated)
+    try {
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+    } catch (e) {
+        // ignore if environment doesn't support CustomEvent
+    }
 }
 
 /**

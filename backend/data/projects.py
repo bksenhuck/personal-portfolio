@@ -12,15 +12,15 @@ Each project includes:
 PROJECTS = [
     {
         'title': {
-            'pt': 'Logistics Optimization Algorithm',
+            'pt': 'Algoritmo de Otimização Logística',
             'en': 'Logistics Optimization Algorithm',
-            'es': 'Logistics Optimization Algorithm',
+            'es': 'Algoritmo de Optimización Logística',
         },
         'description': {
             'pt': (
-                'Implementation of optimization models for a core logistics algorithm determining '
-                'key values for seller strategy classification. Replaced experience-based decisions '
-                'with ML-driven recommendations using mathematical optimization.'
+                'Implementação de modelos de otimização para um algoritmo logístico central que determina '
+                'valores-chave para classificação de estratégias de vendedores. Substituiu decisões baseadas em experiência '
+                'por recomendações orientadas por ML usando otimização matemática.'
             ),
             'en': (
                 'Implementation of optimization models for a core logistics algorithm determining '
@@ -28,31 +28,31 @@ PROJECTS = [
                 'with ML-driven recommendations using mathematical optimization.'
             ),
             'es': (
-                'Implementation of optimization models for a core logistics algorithm determining '
-                'key values for seller strategy classification. Replaced experience-based decisions '
-                'with ML-driven recommendations using mathematical optimization.'
+                'Implementación de modelos de optimización para un algoritmo logístico central que determina '
+                'valores clave para la clasificación de estrategias de vendedores. Sustituyó decisiones basadas en la experiencia '
+                'por recomendaciones impulsadas por ML mediante optimización matemática.'
             ),
         },
         'tech': ['Python', 'Optimization', 'PySpark', 'GCP', 'AWS'],
         'impact': {
-            'pt': 'Replaced ad-hoc analysis with data-driven seller strategy optimization',
+            'pt': 'Substituiu análises ad-hoc por otimização de estratégia de vendedores guiada por dados',
             'en': 'Replaced ad-hoc analysis with data-driven seller strategy optimization',
-            'es': 'Replaced ad-hoc analysis with data-driven seller strategy optimization',
+            'es': 'Sustituyó análisis ad-hoc por optimización de estrategia de vendedores basada en datos',
         },
         'url': 'https://github.com/brayanksenhuck',
         'image': 'project1.jpg'
     },
     {
         'title': {
-            'pt': 'Customer Probability Classification Model',
+            'pt': 'Modelo de Classificação de Probabilidade de Cliente',
             'en': 'Customer Probability Classification Model',
-            'es': 'Customer Probability Classification Model',
+            'es': 'Modelo de Clasificación de Probabilidad de Cliente',
         },
         'description': {
             'pt': (
-                'Classification models estimating customer probability of adopting a product. '
-                'Addressed class imbalance using specialized strategies and behavioral analysis '
-                'modeling instead of point-in-time snapshots.'
+                'Modelos de classificação que estimam a probabilidade de clientes adotarem um produto. '
+                'Abordou o desbalanceamento de classes usando estratégias especializadas e modelagem de comportamento '
+                'em vez de snapshots pontuais.'
             ),
             'en': (
                 'Classification models estimating customer probability of adopting a product. '
@@ -60,25 +60,25 @@ PROJECTS = [
                 'modeling instead of point-in-time snapshots.'
             ),
             'es': (
-                'Classification models estimating customer probability of adopting a product. '
-                'Addressed class imbalance using specialized strategies and behavioral analysis '
-                'modeling instead of point-in-time snapshots.'
+                'Modelos de clasificación que estiman la probabilidad de que los clientes adopten un producto. '
+                'Abordó el desequilibrio de clases utilizando estrategias especializadas y modelado de comportamiento '
+                'en lugar de instantáneas puntuales.'
             ),
         },
         'tech': ['Python', 'Scikit-learn', 'XGBoost', 'PySpark', 'AWS'],
         'impact': {
-            'pt': 'Improved product adoption prediction accuracy by modeling customer behavior',
+            'pt': 'Melhorou a acurácia na previsão de adoção de produto modelando o comportamento do cliente',
             'en': 'Improved product adoption prediction accuracy by modeling customer behavior',
-            'es': 'Improved product adoption prediction accuracy by modeling customer behavior',
+            'es': 'Mejoró la precisión de predicción de adopción de producto modelando el comportamiento del cliente',
         },
         'url': 'https://github.com/brayanksenhuck',
         'image': 'project2.jpg'
     },
     {
         'title': {
-            'pt': 'Industrial Accident Prediction Algorithm',
+            'pt': 'Algoritmo de Previsão de Acidentes Industriais',
             'en': 'Industrial Accident Prediction Algorithm',
-            'es': 'Industrial Accident Prediction Algorithm',
+            'es': 'Algoritmo de Predicción de Accidentes Industriales',
         },
         'description': {
             'pt': (
@@ -96,18 +96,18 @@ PROJECTS = [
         },
         'tech': ['Python', 'Machine Learning', 'Industrial IoT', 'Data Analysis'],
         'impact': {
-            'pt': 'Predictive model for industrial safety - Silicon Valley incubator program',
+            'pt': 'Modelo preditivo para segurança industrial - selecionado para incubadora no Vale do Silício',
             'en': 'Predictive model for industrial safety - Silicon Valley incubator program',
-            'es': 'Predictive model for industrial safety - Silicon Valley incubator program',
+            'es': 'Modelo predictivo para seguridad industrial - programa incubadora en Silicon Valley',
         },
         'url': 'https://github.com/brayanksenhuck',
         'image': 'project3.jpg'
     },
     {
         'title': {
-            'pt': 'Quality Parameter Estimation System',
+            'pt': 'Sistema de Estimativa de Parâmetros de Qualidade',
             'en': 'Quality Parameter Estimation System',
-            'es': 'Quality Parameter Estimation System',
+            'es': 'Sistema de Estimación de Parámetros de Calidad',
         },
         'description': {
             'pt': (
@@ -128,18 +128,18 @@ PROJECTS = [
         },
         'tech': ['Python', 'Spark', 'Time Series', 'Decision Trees', 'PyCaret'],
         'impact': {
-            'pt': 'Reduced quality parameter estimation from months to hours',
+            'pt': 'Reduziu a estimativa de parâmetros de qualidade de meses para horas',
             'en': 'Reduced quality parameter estimation from months to hours',
-            'es': 'Reduced quality parameter estimation from months to hours',
+            'es': 'Redujo la estimación de parámetros de calidad de meses a horas',
         },
         'url': 'https://github.com/brayanksenhuck',
         'image': 'project1.jpg'
     },
     {
         'title': {
-            'pt': 'No-Show Prediction for Car Rental',
+            'pt': 'Previsão de No-Show para Locadora de Veículos',
             'en': 'No-Show Prediction for Car Rental',
-            'es': 'No-Show Prediction for Car Rental',
+            'es': 'Predicción de No-Show para Alquiler de Coches',
         },
         'description': {
             'pt': (
@@ -157,38 +157,38 @@ PROJECTS = [
         },
         'tech': ['Python', 'Machine Learning', 'Classification', 'Power BI'],
         'impact': {
-            'pt': 'Enabled data-driven strategy changes through risk scoring system',
+            'pt': 'Permitiu mudanças estratégicas baseadas em dados por meio de um sistema de pontuação de risco',
             'en': 'Enabled data-driven strategy changes through risk scoring system',
-            'es': 'Enabled data-driven strategy changes through risk scoring system',
+            'es': 'Permitió cambios estratégicos basados en datos mediante un sistema de puntuación de riesgo',
         },
         'url': 'https://github.com/brayanksenhuck',
         'image': 'project2.jpg'
     },
     {
         'title': {
-            'pt': 'E-commerce User Behavior Analysis',
+            'pt': 'Análise de Comportamento de Usuários em E-commerce',
             'en': 'E-commerce User Behavior Analysis',
-            'es': 'E-commerce User Behavior Analysis',
+            'es': 'Análisis de Comportamiento de Usuarios en E-commerce',
         },
         'description': {
             'pt': (
-                'Analysis of user behavior for users searching products but not completing purchases. '
-                'Utilized Google Analytics tracking, Hotjar, surveys and A/B testing to validate hypotheses.'
+                'Análise do comportamento de usuários que procuram produtos, mas não concluem a compra. '
+                'Utilizou Google Analytics, Hotjar, pesquisas e testes A/B para validar hipóteses.'
             ),
             'en': (
                 'Analysis of user behavior for users searching products but not completing purchases. '
                 'Utilized Google Analytics tracking, Hotjar, surveys and A/B testing to validate hypotheses.'
             ),
             'es': (
-                'Analysis of user behavior for users searching products but not completing purchases. '
-                'Utilized Google Analytics tracking, Hotjar, surveys and A/B testing to validate hypotheses.'
+                'Análisis del comportamiento de usuarios que buscan productos pero no completan compras. '
+                'Utilizó Google Analytics, Hotjar, encuestas y pruebas A/B para validar hipótesis.'
             ),
         },
         'tech': ['Google Analytics', 'Hotjar', 'A/B Testing', 'Data Analysis', 'Power BI'],
         'impact': {
-            'pt': 'Identified conversion barriers through behavior analysis and testing',
+            'pt': 'Identificou barreiras de conversão por meio de análise de comportamento e testes',
             'en': 'Identified conversion barriers through behavior analysis and testing',
-            'es': 'Identified conversion barriers through behavior analysis and testing',
+            'es': 'Identificó barreras de conversión mediante análisis de comportamiento y pruebas',
         },
         'url': 'https://github.com/brayanksenhuck',
         'image': 'project3.jpg'

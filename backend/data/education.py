@@ -7,40 +7,37 @@ with chronological ordering from most recent to earliest.
 EDUCATION = [
     {
         'degree': {
-            'pt': 'MBA in Data Science and Analytics',
+            'pt': 'MBA em Ciência de Dados e Analytics',
             'en': 'MBA in Data Science and Analytics',
-            'es': 'MBA in Data Science and Analytics',
+            'es': 'MBA en Ciencia de Datos y Analytics',
         },
         'institution': {
-            'pt': 'Universidade de São Paulo USP/Esalq)',
-            'en': 'Universidade de São Paulo USP/Esalq)',
-            'es': 'Universidade de São Paulo USP/Esalq)',
+            'pt': 'Universidade de São Paulo (USP/Esalq)',
+            'en': 'Universidade de São Paulo (USP/Esalq)',
+            'es': 'Universidade de São Paulo (USP/Esalq)',
         },
         'period': {
-            'pt': 'May 2023 - December 2024',
+            'pt': 'Maio 2023 - Dezembro 2024',
             'en': 'May 2023 - December 2024',
-            'es': 'May 2023 - December 2024',
+            'es': 'Mayo 2023 - Diciembre 2024',
         },
         'image': 'images/education/mba.jpg',
         'description': {
             'pt': (
-                'Post-graduate MBA focused on data science and analytics. '
-                'Advanced studies in machine learning applications for business optimization.'
+                'MBA pós-graduação focado em ciência de dados e analytics. Estudos avançados em aplicações de machine learning para otimização de negócios.'
             ),
             'en': (
-                'Post-graduate MBA focused on data science and analytics. '
-                'Advanced studies in machine learning applications for business optimization.'
+                'Post-graduate MBA focused on data science and analytics. Advanced studies in machine learning applications for business optimization.'
             ),
             'es': (
-                'Post-graduate MBA focused on data science and analytics. '
-                'Advanced studies in machine learning applications for business optimization.'
+                'MBA de posgrado enfocado en ciencia de datos y analytics. Estudios avanzados en aplicaciones de machine learning para la optimización empresarial.'
             ),
         },
         'highlights': {
             'pt': [
-                'Specialized in Data Science and Analytics',
-                'Focus on machine learning applications',
-                'Business intelligence and decision making'
+                'Especialização em Ciência de Dados e Analytics',
+                'Foco em aplicações de machine learning',
+                'Business intelligence e tomada de decisão'
             ],
             'en': [
                 'Specialized in Data Science and Analytics',
@@ -48,17 +45,17 @@ EDUCATION = [
                 'Business intelligence and decision making'
             ],
             'es': [
-                'Specialized in Data Science and Analytics',
-                'Focus on machine learning applications',
-                'Business intelligence and decision making'
+                'Especialización en Ciencia de Datos y Analytics',
+                'Enfoque en aplicaciones de machine learning',
+                'Business intelligence y toma de decisiones'
             ],
         }
     },
     {
         'degree': {
-            'pt': 'Specialization in Big Data',
+            'pt': 'Especialização em Big Data',
             'en': 'Specialization in Big Data',
-            'es': 'Specialization in Big Data',
+            'es': 'Especialización en Big Data',
         },
         'institution': {
             'pt': 'Universidade de São Paulo (USP/POLI)',
@@ -73,23 +70,20 @@ EDUCATION = [
         'image': 'images/education/diploma_USP.jpg',
         'description': {
             'pt': (
-                'Specialization in Big Data and Data Intelligence Management. '
-                'Comprehensive study of data systems and analytics architectures.'
+                'Especialização em Big Data e Gestão de Inteligência de Dados. Estudo abrangente de sistemas de dados e arquiteturas de analytics.'
             ),
             'en': (
-                'Specialization in Big Data and Data Intelligence Management. '
-                'Comprehensive study of data systems and analytics architectures.'
+                'Specialization in Big Data and Data Intelligence Management. Comprehensive study of data systems and analytics architectures.'
             ),
             'es': (
-                'Specialization in Big Data and Data Intelligence Management. '
-                'Comprehensive study of data systems and analytics architectures.'
+                'Especialización en Big Data y Gestión de Inteligencia de Datos. Estudio integral de sistemas de datos y arquitecturas de analytics.'
             ),
         },
         'highlights': {
             'pt': [
-                'Data Intelligence and Management',
-                'Big Data architectures and technologies',
-                'Data pipeline development'
+                'Inteligência de Dados e Gestão',
+                'Arquiteturas e tecnologias Big Data',
+                'Desenvolvimento de pipelines de dados'
             ],
             'en': [
                 'Data Intelligence and Management',
@@ -97,17 +91,17 @@ EDUCATION = [
                 'Data pipeline development'
             ],
             'es': [
-                'Data Intelligence and Management',
-                'Big Data architectures and technologies',
-                'Data pipeline development'
+                'Inteligencia de Datos y Gestión',
+                'Arquitecturas y tecnologías Big Data',
+                'Desarrollo de pipelines de datos'
             ],
         }
     },
     {
         'degree': {
-            'pt': 'Bachelor of Engineering',
+            'pt': 'Bacharelado em Engenharia',
             'en': 'Bachelor of Engineering',
-            'es': 'Bachelor of Engineering',
+            'es': 'Licenciatura en Ingeniería',
         },
         'institution': {
             'pt': 'University of Toronto (UofT)',
@@ -122,23 +116,20 @@ EDUCATION = [
         'image': 'images/education/diploma_UOFT.jpg',
         'description': {
             'pt': (
-                'International exchange program. Two-year engineering studies '
-                'at University of Toronto, Canada.'
+                'Programa de intercâmbio internacional. Dois anos de estudos de engenharia na University of Toronto, Canadá.'
             ),
             'en': (
-                'International exchange program. Two-year engineering studies '
-                'at University of Toronto, Canada.'
+                'International exchange program. Two-year engineering studies at University of Toronto, Canada.'
             ),
             'es': (
-                'International exchange program. Two-year engineering studies '
-                'at University of Toronto, Canada.'
+                'Programa de intercambio internacional. Dos años de estudios de ingeniería en la University of Toronto, Canadá.'
             ),
         },
         'highlights': {
             'pt': [
-                'International exchange (2 years)',
-                'Engineering fundamentals',
-                'Technical foundation for data science'
+                'Intercâmbio internacional (2 anos)',
+                'Fundamentos de engenharia',
+                'Base técnica para ciência de dados'
             ],
             'en': [
                 'International exchange (2 years)',
@@ -146,22 +137,22 @@ EDUCATION = [
                 'Technical foundation for data science'
             ],
             'es': [
-                'International exchange (2 years)',
-                'Engineering fundamentals',
-                'Technical foundation for data science'
+                'Intercambio internacional (2 años)',
+                'Fundamentos de ingeniería',
+                'Base técnica para ciencia de datos'
             ],
         }
     },
     {
         'degree': {
-            'pt': 'Bachelor of Engineering - Control and Automation',
+            'pt': 'Bacharelado em Engenharia - Controle e Automação',
             'en': 'Bachelor of Engineering - Control and Automation',
-            'es': 'Bachelor of Engineering - Control and Automation',
+            'es': 'Licenciatura en Ingeniería - Control y Automatización',
         },
         'institution': {
             'pt': 'Instituto Federal de Educação, Ciência e Tecnologia de São Paulo (IFSP)',
             'en': 'Instituto Federal de Educação, Ciência e Tecnologia de São Paulo (IFSP)',
-            'es': 'Instituto Federal de Educação, Ciência e Tecnologia de São Paulo (IFSP)',
+            'es': 'Instituto Federal de Educación, Ciencia y Tecnología de São Paulo (IFSP)',
         },
         'period': {
             'pt': '2010 - 2016',
@@ -171,24 +162,21 @@ EDUCATION = [
         'image': 'images/education/diploma_federal.jpg',
         'description': {
             'pt': (
-                'Bachelor in Control and Automation Engineering. Foundation in systems, '
-                'automation, and technical problem-solving.'
+                'Bacharelado em Engenharia de Controle e Automação. Formação em sistemas, automação e resolução técnica de problemas.'
             ),
             'en': (
-                'Bachelor in Control and Automation Engineering. Foundation in systems, '
-                'automation, and technical problem-solving.'
+                'Bachelor in Control and Automation Engineering. Foundation in systems, automation, and technical problem-solving.'
             ),
             'es': (
-                'Bachelor in Control and Automation Engineering. Foundation in systems, '
-                'automation, and technical problem-solving.'
+                'Licenciatura en Ingeniería de Control y Automatización. Formación en sistemas, automatización y resolución técnica de problemas.'
             ),
         },
         'highlights': {
             'pt': [
-                'Completed 2010-2016',
-                'Control Systems Engineering',
-                'Automation and Industrial Systems',
-                'Robotics and Mechatronics'
+                'Concluído 2010-2016',
+                'Engenharia de Sistemas de Controle',
+                'Automação e Sistemas Industriais',
+                'Robótica e Mecatrônica'
             ],
             'en': [
                 'Completed 2010-2016',
@@ -197,10 +185,10 @@ EDUCATION = [
                 'Robotics and Mechatronics'
             ],
             'es': [
-                'Completed 2010-2016',
-                'Control Systems Engineering',
-                'Automation and Industrial Systems',
-                'Robotics and Mechatronics'
+                'Completado 2010-2016',
+                'Ingeniería de Sistemas de Control',
+                'Automatización y Sistemas Industriales',
+                'Robótica y Mecatrónica'
             ],
         }
     }
