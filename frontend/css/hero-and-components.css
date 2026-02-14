@@ -208,7 +208,7 @@
 
 .fact-content {
     padding: 2.5rem;
-    min-height: 280px; /* normalize card height */
+    min-height: 320px; /* normalize card height to requested 320px */
 }
 
 /* Ensure descriptive cards have consistent sizing and alternate image/content */
@@ -243,8 +243,8 @@
 .fun-fact-item.metric {
     display: flex;
     align-items: center;
-    padding: 0.75rem 1rem;
-    min-height: 48px;
+    padding: 0.9rem 1.25rem;
+    min-height: 64px;
     background-color: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 999px;
@@ -252,11 +252,11 @@
 }
 
 .fun-fact-item.metric .metric-value {
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: 700;
     color: var(--text-primary);
     margin-right: 1rem;
-    width: 40px;
+    width: 48px;
     text-align: left;
 }
 
@@ -265,4 +265,10 @@
     text-align: center;
     color: var(--text-secondary);
     font-weight: 600;
+}
+
+/* Ensure descriptive cards have fixed height */
+.fun-fact-item.fun-fact-left,
+.fun-fact-item.fun-fact-right {
+    min-height: 320px;
 }
