@@ -56,21 +56,74 @@ function renderPortfolioData(data) {
         }
     }
     
-    // Render fun facts
+    // Render fun facts (support normalized backend `type`: 'metric' or 'card')
     if (fun_facts && fun_facts.length > 0) {
         const funFactsGrid = document.querySelector('.fun-facts-grid');
         if (funFactsGrid) {
-            funFactsGrid.innerHTML = fun_facts.map(fact => `
-                <article class="fun-fact-item fun-fact-${fact.position || 'left'}">
-                    <div class="fact-image">
-                        <img src="${fact.image}" alt="${fact.title}">
-                    </div>
-                    <div class="fact-content">
-                        <h3 class="fact-title">${fact.title}</h3>
-                        <p class="fact-description">${fact.description}</p>
-                    </div>
-                </article>
-            `).join('');
+            const lang = (typeof window !== 'undefined' && localStorage.getItem('language')) ? localStorage.getItem('language') : 'pt';
+            const localize = (field) => {
+                if (!field) return '';
+                if (typeof field === 'object') return field[lang] || field.pt || Object.values(field)[0] || '';
+                return field;
+            };
+
+            funFactsGrid.innerHTML = fun_facts.map((fact, idx) => {
+                // Use explicit type when provided
+                if (fact && fact.type === 'metric') {
+                    const label = localize(fact.label);
+                    return `
+                        <article class="fun-fact-item metric">
+                            <div class="metric-value">${fact.value}</div>
+                            <div class="metric-label">${label}</div>
+                        </article>
+                    `;
+                }
+
+                if (fact && fact.type === 'card') {
+                    const position = fact.position || (idx % 2 === 0 ? 'left' : 'right');
+                    const title = localize(fact.title);
+                    const desc = localize(fact.description);
+                    let imgSrc = '';
+                    if (fact.image) imgSrc = fact.image;
+                    const imgHtml = imgSrc ? `<div class="fact-image"><img src="${imgSrc}" alt="${title}" onerror="this.style.display='none'"></div>` : '';
+                    return `
+                        <article class="fun-fact-item fun-fact-${position}">
+                            ${imgHtml}
+                            <div class="fact-content">
+                                ${title ? `<h3 class="fact-title">${title}</h3>` : ''}
+                                ${desc ? `<p class="fact-description">${desc}</p>` : ''}
+                            </div>
+                        </article>
+                    `;
+                }
+
+                // Fallback for legacy items: metric detection
+                if (fact && fact.label && typeof fact.value !== 'undefined') {
+                    const label = localize(fact.label);
+                    return `
+                        <article class="fun-fact-item metric">
+                            <div class="metric-value">${fact.value}</div>
+                            <div class="metric-label">${label}</div>
+                        </article>
+                    `;
+                }
+
+                // Generic fallback: render as a simple card
+                const fallbackPosition = fact.position || (idx % 2 === 0 ? 'left' : 'right');
+                const fallbackTitle = localize(fact.title || fact.label);
+                const fallbackDesc = localize(fact.description);
+                const fallbackImg = fact.image || '';
+                const fallbackImgHtml = fallbackImg ? `<div class="fact-image"><img src="${fallbackImg}" alt="${fallbackTitle}" onerror="this.style.display='none'"></div>` : '';
+                return `
+                    <article class="fun-fact-item fun-fact-${fallbackPosition}">
+                        ${fallbackImgHtml}
+                        <div class="fact-content">
+                            ${fallbackTitle ? `<h3 class="fact-title">${fallbackTitle}</h3>` : ''}
+                            ${fallbackDesc ? `<p class="fact-description">${fallbackDesc}</p>` : ''}
+                        </div>
+                    </article>
+                `;
+            }).join('');
         }
     }
 }
@@ -247,6 +300,15 @@ async function loadData() {
     }
 }
 
+// Expose helpers for debugging in DevTools
+if (typeof window !== 'undefined') {
+    window.loadData = loadData;
+    window.reloadData = async function() {
+        api.clearCache();
+        await loadData();
+    };
+}
+
 /**
  * Initialize all application features
  */
@@ -272,6 +334,13 @@ function initApp() {
     
     // Handle initial hash on page load
     handleInitialHash();
+
+    // Listen for language changes from the theme module and reload data
+    window.addEventListener('languageChanged', (evt) => {
+        // Clear API cache so we fetch fresh translated data, then reload
+        api.clearCache();
+        loadData();
+    });
 }
 
 // Initialize when DOM is ready

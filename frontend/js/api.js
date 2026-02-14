@@ -7,8 +7,19 @@
 // API Configuration
 const API_CONFIG = {
     // Use environment variable or fallback to the page origin (works in production
-    // when backend serves the frontend) or localhost for non-browser environments
-    baseURL: window.ENV?.API_URL || (typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}` : 'http://localhost:5001'),
+    // when backend serves the frontend). Prefer 127.0.0.1 instead of 'localhost'
+    // because some environments resolve 'localhost' to IPv6 (::1) which can
+    // point to a different server and cause 404s.
+    baseURL: window.ENV?.API_URL || (function(){
+        if (typeof window === 'undefined') return 'http://127.0.0.1:5001';
+        const proto = window.location.protocol || 'http:';
+        let host = window.location.hostname || '127.0.0.1';
+        // normalize localhost to IPv4 loopback to avoid IPv6 resolution issues
+        if (host === 'localhost') host = '127.0.0.1';
+        // include port if present
+        const port = window.location.port ? `:${window.location.port}` : '';
+        return `${proto}//${host}${port}`;
+    })(),
     timeout: 10000,
     cacheExpiry: 5 * 60 * 1000 // 5 minutes
 };
@@ -79,15 +90,19 @@ async function fetchWithTimeout(url, options = {}) {
  */
 async function getCached(endpoint, useFallback = true) {
     // Try cache first
-    const cached = cache.get(endpoint);
+    const lang = (typeof window !== 'undefined' && localStorage.getItem('language')) ? localStorage.getItem('language') : 'pt';
+    const cacheKey = `${endpoint}::${lang}`;
+    const cached = cache.get(cacheKey);
     if (cached) {
         return cached;
     }
     
     try {
-        const url = `${API_CONFIG.baseURL}/api/${endpoint}`;
+        // Append lang query param so backend can return translated data
+        const base = `${API_CONFIG.baseURL}/api/${endpoint}`;
+        const url = `${base}${base.includes('?') ? '&' : '?'}lang=${encodeURIComponent(lang)}`;
         const data = await fetchWithTimeout(url);
-        cache.set(endpoint, data);
+        cache.set(cacheKey, data);
         return data;
     } catch (error) {
         console.error(`API Error fetching ${endpoint}:`, error.message);

@@ -12,10 +12,7 @@ export function initCarousel() {
     const nextBtn = document.querySelector('.carousel-next');
     const dots = document.querySelectorAll('.carousel-dot');
     
-    console.log('Carousel init:', { track: !!track, wrapper: !!wrapper, items: items.length, prevBtn: !!prevBtn, nextBtn: !!nextBtn });
-    
     if (!track || items.length === 0) {
-        console.log('Carousel init failed - missing track or items');
         return;
     }
 
@@ -26,7 +23,6 @@ export function initCarousel() {
         const offset = -(currentIndex * 100);
         track.style.transform = `translateX(${offset}%)`;
         track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-        console.log('Updated carousel to index:', currentIndex);
         updateDots();
     }
 
@@ -62,7 +58,6 @@ export function initCarousel() {
     // Button event listeners
     if (prevBtn) {
         prevBtn.addEventListener('click', function(e) {
-            console.log('Prev button clicked');
             e.preventDefault();
             e.stopPropagation();
             prevSlide();
@@ -71,7 +66,6 @@ export function initCarousel() {
     
     if (nextBtn) {
         nextBtn.addEventListener('click', function(e) {
-            console.log('Next button clicked');
             e.preventDefault();
             e.stopPropagation();
             nextSlide();

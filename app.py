@@ -6,7 +6,7 @@ exposes lightweight JSON API endpoints that return data from
 """
 
 import os
-from flask import Flask, send_from_directory, send_file, jsonify
+from flask import Flask, send_from_directory, send_file, jsonify, request
 from flask_cors import CORS
 
 # Import data modules used by the API endpoints
@@ -16,6 +16,9 @@ from backend.data.experience import EXPERIENCE
 from backend.data.education import EDUCATION
 from backend.data.skills import SKILLS
 from backend.data.fun_facts import FUN_FACTS
+
+# i18n helpers
+from backend.i18n import get_lang, translate_dataset
 
 
 # Project paths
@@ -72,46 +75,67 @@ def serve(requested):
 @app.route("/api/health", methods=["GET"])
 def health():
     """Health check endpoint."""
-    return jsonify({"status": "ok"})
+    return jsonify({"status": "healthy"})
 
 
 @app.route("/api/all", methods=["GET"])
 def api_all():
     """Return all portfolio data in a single payload."""
-    return jsonify(
-        {
-            "profile": PROFILE,
-            "projects": PROJECTS,
-            "experience": EXPERIENCE,
-            "education": EDUCATION,
-            "skills": SKILLS,
-            "fun_facts": FUN_FACTS,
-        }
-    )
+    lang = get_lang(request)
+    payload = {
+        "profile": translate_dataset(PROFILE, lang),
+        "projects": translate_dataset(PROJECTS, lang),
+        "experience": translate_dataset(EXPERIENCE, lang),
+        "education": translate_dataset(EDUCATION, lang),
+        "skills": translate_dataset(SKILLS, lang),
+        "fun_facts": translate_dataset(FUN_FACTS, lang),
+    }
+    resp = jsonify(payload)
+    # Persist language selection if provided via querystring
+    if request.args.get('lang'):
+        resp.set_cookie('lang', lang, max_age=30 * 24 * 3600)
+    return resp
 
 
 @app.route("/api/portfolio", methods=["GET"])
 def api_portfolio():
     """Return a portfolio summary (profile, skills, facts)."""
-    return jsonify({"profile": PROFILE, "skills": SKILLS, "fun_facts": FUN_FACTS})
+    lang = get_lang(request)
+    payload = {"profile": translate_dataset(PROFILE, lang), "skills": translate_dataset(SKILLS, lang), "fun_facts": translate_dataset(FUN_FACTS, lang)}
+    resp = jsonify(payload)
+    if request.args.get('lang'):
+        resp.set_cookie('lang', lang, max_age=30 * 24 * 3600)
+    return resp
 
 
 @app.route("/api/projects", methods=["GET"])
 def api_projects():
     """Return featured projects."""
-    return jsonify(PROJECTS)
+    lang = get_lang(request)
+    resp = jsonify(translate_dataset(PROJECTS, lang))
+    if request.args.get('lang'):
+        resp.set_cookie('lang', lang, max_age=30 * 24 * 3600)
+    return resp
 
 
 @app.route("/api/experience", methods=["GET"])
 def api_experience():
     """Return professional experience."""
-    return jsonify(EXPERIENCE)
+    lang = get_lang(request)
+    resp = jsonify(translate_dataset(EXPERIENCE, lang))
+    if request.args.get('lang'):
+        resp.set_cookie('lang', lang, max_age=30 * 24 * 3600)
+    return resp
 
 
 @app.route("/api/education", methods=["GET"])
 def api_education():
     """Return education records."""
-    return jsonify(EDUCATION)
+    lang = get_lang(request)
+    resp = jsonify(translate_dataset(EDUCATION, lang))
+    if request.args.get('lang'):
+        resp.set_cookie('lang', lang, max_age=30 * 24 * 3600)
+    return resp
 
 
 if __name__ == '__main__':
